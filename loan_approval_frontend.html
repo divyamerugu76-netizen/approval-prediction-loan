@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LoanSight — Credit Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F7F8FA; --surface: #FFFFFF; --border: #E2E5EB;
+    --blue-dark: #0C447C; --blue-mid: #185FA5; --blue-light: #E6F1FB; --blue-text: #042C53;
+    --text: #111827; --muted: #6B7280; --hint: #9CA3AF;
+    --green-bg: #EAF3DE; --green-border: #97C459; --green-dark: #27500A; --green-mid: #3B6D11; --green-accent: #C0DD97;
+    --red-bg: #FCEBEB; --red-border: #F09595; --red-dark: #791F1F; --red-mid: #A32D2D; --red-accent: #F7C1C1;
+    --radius: 10px; --radius-sm: 7px; --shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0 16px 60px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 0 22px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-icon { width: 34px; height: 34px; background: var(--blue-dark); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--blue-light); font-size: 16px; }
+  .brand-name { font-size: 15px; font-weight: 600; }
+  .brand-sub { font-size: 12px; color: var(--muted); }
+  .badge { font-size: 11px; background: var(--blue-light); color: var(--blue-dark); border-radius: 20px; padding: 4px 10px; font-weight: 500; }
+
+  .page-head { margin-bottom: 28px; }
+  .page-head h1 { font-size: 24px; font-weight: 600; margin-bottom: 5px; }
+  .page-head p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .steps { display: flex; margin-bottom: 28px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); }
+  .step { flex: 1; display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #fff; font-size: 12px; color: var(--muted); border-right: 1px solid var(--border); }
+  .step:last-child { border-right: none; }
+  .step.active { background: var(--blue-light); color: var(--blue-dark); }
+  .step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--muted); flex-shrink: 0; }
+  .step.active .step-num { background: var(--blue-dark); color: white; }
+
+  .section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 16px; overflow: hidden; box-shadow: var(--shadow); }
+  .sec-head { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: #FAFBFC; }
+  .sec-icon { width: 30px; height: 30px; border-radius: 7px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; color: var(--blue-mid); font-size: 15px; }
+  .sec-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .sec-sub { font-size: 12px; color: var(--muted); }
+  .sec-body { padding: 20px; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 540px) { .grid2 { grid-template-columns: 1fr; } .steps { flex-direction: column; } .step { border-right: none; border-bottom: 1px solid var(--border); } .step:last-child { border-bottom: none; } }
+
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field label { font-size: 11px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .input-wrap { position: relative; }
+  .input-prefix { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--muted); pointer-events: none; }
+  .input-wrap input { padding-left: 22px; }
+  .field input[type=number] { width: 100%; height: 40px; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0 12px; font-size: 14px; color: var(--text); background: #FAFBFC; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
+  .field input[type=number]:focus { border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(24,95,165,0.1); background: white; }
+  .score-hint { display: flex; justify-content: space-between; margin-top: 3px; }
+  .score-hint span { font-size: 10px; color: var(--hint); }
+
+  .toggle-row { display: flex; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+  .toggle-row input[type=radio] { display: none; }
+  .toggle-row label { flex: 1; text-align: center; padding: 9px 10px; font-size: 13px; cursor: pointer; color: var(--muted); background: #FAFBFC; transition: all 0.12s; border-right: 1px solid var(--border); font-family: 'Inter', sans-serif; }
+  .toggle-row label:last-child { border-right: none; }
+  .toggle-row input[type=radio]:checked + label { background: var(--blue-dark); color: white; font-weight: 500; }
+
+  .submit-area { margin-top: 20px; }
+  .btn-primary { width: 100%; height: 46px; background: var(--blue-dark); color: white; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif; transition: background 0.15s; }
+  .btn-primary:hover { background: var(--blue-text); }
+  .btn-primary:disabled { background: #B5D4F4; color: var(--blue-mid); cursor: not-allowed; }
+  .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
+  .helper { font-size: 11px; color: var(--hint); text-align: center; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+  .err-box { display: none; background: var(--red-bg); border: 1px solid var(--red-border); color: var(--red-dark); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; margin-top: 12px; align-items: center; gap: 8px; }
+
+  .result-card { display: none; border-radius: var(--radius); border: 1px solid; padding: 24px; margin-top: 16px; animation: fadeUp 0.3s ease; box-shadow: var(--shadow); }
+  .result-card.approved { background: var(--green-bg); border-color: var(--green-border); }
+  .result-card.rejected { background: var(--red-bg); border-color: var(--red-border); }
+  .result-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+  .result-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .approved .result-avatar { background: var(--green-accent); color: var(--green-dark); }
+  .rejected .result-avatar { background: var(--red-accent); color: var(--red-dark); }
+  .result-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .approved .result-title { color: var(--green-dark); }
+  .rejected .result-title { color: var(--red-dark); }
+  .result-desc { font-size: 13px; line-height: 1.65; }
+  .approved .result-desc { color: var(--green-mid); }
+  .rejected .result-desc { color: var(--red-mid); }
+  .result-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding-top: 16px; border-top: 1px solid; }
+  .approved .result-meta { border-color: var(--green-accent); }
+  .rejected .result-meta { border-color: var(--red-accent); }
+  .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 2px; }
+  .approved .meta-label { color: #639922; }
+  .rejected .meta-label { color: var(--red-mid); opacity: 0.8; }
+  .meta-val { font-size: 14px; font-weight: 600; }
+  .approved .meta-val { color: var(--green-dark); }
+  .rejected .meta-val { color: var(--red-dark); }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-icon"><i class="ti ti-building-bank"></i></div>
+      <div>
+        <div class="brand-name">LoanSight</div>
+        <div class="brand-sub">Credit Assessment Platform</div>
+      </div>
+    </div>
+    <span class="badge"><i class="ti ti-cpu" style="font-size:11px;margin-right:3px;vertical-align:-1px"></i>AI-powered</span>
+  </div>
+
+  <div class="page-head">
+    <h1>Loan approval assessment</h1>
+    <p>Complete the form below. Our model evaluates financial risk and returns an instant decision.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step active">
+      <div class="step-num">1</div>
+      <span>Applicant profile</span>
+    </div>
+    <div class="step active">
+      <div class="step-num">2</div>
+      <span>Loan details</span>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <span>Decision</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon"><i class="ti ti-user"></i></div>
+      <div>
+        <div class="sec-title">Applicant profile</div>
+        <div class="sec-sub">Education and employment background</div>
+      </div>
+    </div>
+    <div class="sec-body">
+      <div class="grid2">
+        <div class="field">
+          <label>Education level</label>
+          <div class="toggle-row">
+            <input type="radio" name="education" id="edu-g" value="Graduate" checked />
+            <label for="edu-g">Graduate</label>
+            <input type="radio" name="education" id="edu-ng" value="Not Graduate" />
+            <label for="edu-ng">Not graduate</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Employment type</label>
+          <div class="toggle-row">
+            <input type="radio" name="self_employed" id="se-no" value="No" checked />
+            <label for="se-no">Salaried</label>
+            <input type="radio" name="self_employed" id="se-yes" value="Yes" />
+            <label for="se-yes">Self-employed</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon"><i class="ti ti-report-money"></i></div>
+      <div>
+        <div class="sec-title">Loan details</div>
+        <div class="sec-sub">Financial information for credit evaluation</div>
+      </div>
+    </div>
+    <div class="sec-body">
+      <div class="grid2" style="margin-bottom:16px">
+        <div class="field">
+          <label>Annual income</label>
+          <div class="input-wrap">
+            <span class="input-prefix">₹</span>
+            <input type="number" id="income_annum" placeholder="e.g. 900000" min="0" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Loan amount</label>
+          <div class="input-wrap">
+            <span class="input-prefix">₹</span>
+            <input type="number" id="loan_amount" placeholder="e.g. 2900000" min="0" />
+          </div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="field">
+          <label>Loan term (years)</label>
+          <input type="number" id="loan_term" placeholder="e.g. 12" min="1" max="30" />
+        </div>
+        <div class="field">
+          <label>CIBIL score</label>
+          <input type="number" id="cibil_score" placeholder="300 – 900" min="300" max="900" />
+          <div class="score-hint">
+            <span>Poor &lt;550</span>
+            <span>Fair 550–700</span>
+            <span>Good &gt;700</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit-area">
+    <button class="btn-primary" id="submitBtn" onclick="submitPrediction()">
+      <i class="ti ti-sparkles" id="btnIcon"></i>
+      <span id="btnText">Run credit assessment</span>
+      <div class="spinner" id="spinner"></div>
+    </button>
+    <div class="helper">
+      <i class="ti ti-lock" style="font-size:12px"></i>
+      Secure &nbsp;·&nbsp; Data not stored &nbsp;·&nbsp; Powered by Random Forest model
+    </div>
+    <div class="err-box" id="errBox">
+      <i class="ti ti-alert-circle"></i>
+      <span id="errText"></span>
+    </div>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-top">
+      <div class="result-avatar" id="resultAvatar"></div>
+      <div>
+        <div class="result-title" id="resultTitle"></div>
+        <div class="result-desc" id="resultDesc"></div>
+      </div>
+    </div>
+    <div class="result-meta" id="resultMeta"></div>
+  </div>
+
+</div>
+
+<script>
+async function submitPrediction() {
+  const btn = document.getElementById('submitBtn');
+  const spinner = document.getElementById('spinner');
+  const btnText = document.getElementById('btnText');
+  const btnIcon = document.getElementById('btnIcon');
+  const errBox = document.getElementById('errBox');
+  const resultCard = document.getElementById('resultCard');
+
+  const ids = ['income_annum','loan_amount','loan_term','cibil_score'];
+  for (const id of ids) {
+    if (!document.getElementById(id).value) {
+      showErr('Please complete all fields before running the assessment.'); return;
+    }
+  }
+
+  const income = parseFloat(document.getElementById('income_annum').value);
+  const loanAmt = parseFloat(document.getElementById('loan_amount').value);
+  const term = parseInt(document.getElementById('loan_term').value);
+  const cibil = parseInt(document.getElementById('cibil_score').value);
+  const education = document.querySelector('input[name="education"]:checked').value;
+  const self_employed = document.querySelector('input[name="self_employed"]:checked').value;
+
+  if (cibil < 300 || cibil > 900) { showErr('CIBIL score must be between 300 and 900.'); return; }
+
+  btn.disabled = true;
+  btnText.textContent = 'Analysing...';
+  btnIcon.style.display = 'none';
+  spinner.style.display = 'block';
+  errBox.style.display = 'none';
+  resultCard.style.display = 'none';
+
+  try {
+    const res = await fetch('http://127.0.0.1:8000/predict', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ education, self_employed, income_annum: income, loan_amount: loanAmt, loan_term: term, cibil_score: cibil })
+    });
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    const raw = (data.prediction || '').toLowerCase().trim();
+    const approved = raw.includes('approved') || raw === '1';
+
+    resultCard.className = 'result-card ' + (approved ? 'approved' : 'rejected');
+    document.getElementById('resultAvatar').innerHTML = approved
+      ? '<i class="ti ti-check"></i>' : '<i class="ti ti-x"></i>';
+    document.getElementById('resultTitle').textContent = approved ? 'Application approved' : 'Application not approved';
+    document.getElementById('resultDesc').textContent = approved
+      ? "The applicant's financial profile meets our credit criteria. This loan is cleared for processing."
+      : "Based on the provided profile, this application does not meet our current credit criteria. The applicant may reapply after improving their financial standing.";
+
+    const ratio = ((loanAmt / income) * 100).toFixed(1);
+    const scoreLabel = cibil >= 700 ? 'Good' : cibil >= 550 ? 'Fair' : 'Poor';
+    document.getElementById('resultMeta').innerHTML = `
+      <div><div class="meta-label">CIBIL score</div><div class="meta-val">${cibil} · ${scoreLabel}</div></div>
+      <div><div class="meta-label">Debt-to-income</div><div class="meta-val">${ratio}%</div></div>
+      <div><div class="meta-label">Loan term</div><div class="meta-val">${term} years</div></div>
+    `;
+    resultCard.style.display = 'block';
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  } catch (err) {
+    showErr('Unable to reach the API. Ensure your FastAPI server is running at http://127.0.0.1:8000.');
+  } finally {
+    btn.disabled = false;
+    btnText.textContent = 'Run credit assessment';
+    btnIcon.style.display = '';
+    spinner.style.display = 'none';
+  }
+}
+
+function showErr(msg) {
+  const b = document.getElementById('errBox');
+  document.getElementById('errText').textContent = msg;
+  b.style.display = 'flex';
+}
+</script>
+</body>
+</html>
