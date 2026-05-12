@@ -1,5 +1,7 @@
 
 
+import os
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
@@ -7,6 +9,8 @@ from typing import Optional
 import mysql.connector
 import hashlib, random, string, re
 from datetime import datetime
+
+import uvicorn
 
 DB_CONFIG = {
     "host":     "127.0.0.1",
@@ -255,3 +259,11 @@ def predict(body: PredictIn):
 @app.get("/")
 def root():
     return {"status": "NexaBank API running ✓"}
+
+import os
+
+uvicorn.run(
+    app,
+    host="0.0.0.0",
+    port=int(os.environ.get("PORT", 7860))
+)git add .
