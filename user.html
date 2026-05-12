@@ -200,16 +200,8 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   display:flex;align-items:center;justify-content:space-between;gap:20px;
   margin-top:22px;position:relative;overflow:hidden;
 }
-.predict-cta-banner::before{
-  content:'';position:absolute;right:-40px;top:-40px;
-  width:200px;height:200px;border-radius:50%;
-  background:rgba(255,255,255,0.06);pointer-events:none;
-}
-.predict-cta-banner::after{
-  content:'';position:absolute;right:60px;bottom:-60px;
-  width:150px;height:150px;border-radius:50%;
-  background:rgba(255,255,255,0.04);pointer-events:none;
-}
+.predict-cta-banner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.06);pointer-events:none;}
+.predict-cta-banner::after{content:'';position:absolute;right:60px;bottom:-60px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none;}
 .pcta-left{position:relative;z-index:1}
 .pcta-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:3px 11px;font-size:10px;font-weight:700;letter-spacing:0.5px;margin-bottom:10px}
 .pcta-title{font-size:20px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px}
@@ -217,44 +209,166 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .pcta-checks{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap}
 .pcta-check{font-size:11.5px;display:flex;align-items:center;gap:5px;opacity:0.85}
 .pcta-right{position:relative;z-index:1;flex-shrink:0}
-.goto-predict-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  background:#fff;color:#3D1A8C;
-  border:none;border-radius:10px;
-  padding:0 24px;height:50px;
-  font-size:14px;font-weight:800;font-family:'Sora',sans-serif;
-  cursor:pointer;transition:all 0.2s;white-space:nowrap;
-  box-shadow:0 4px 20px rgba(0,0,0,0.2);
-}
+.goto-predict-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#3D1A8C;border:none;border-radius:10px;padding:0 24px;height:50px;font-size:14px;font-weight:800;font-family:'Sora',sans-serif;cursor:pointer;transition:all 0.2s;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,0.2);}
 .goto-predict-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
 .goto-predict-btn:active{transform:translateY(0)}
 .goto-predict-btn i{font-size:18px}
 
 /* ── PREDICTION PAGE ── */
-.predict-hero{
-  background:linear-gradient(135deg,#0D0828 0%,#1F0A5C 40%,#3D1A8C 100%);
-  border-radius:var(--r);padding:30px 32px;color:#fff;
-  margin-bottom:20px;position:relative;overflow:hidden;
-}
+.predict-hero{background:linear-gradient(135deg,#0D0828 0%,#1F0A5C 40%,#3D1A8C 100%);border-radius:var(--r);padding:30px 32px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden;}
 .predict-hero::before{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(107,63,212,0.25);pointer-events:none}
 .predict-hero::after{content:'';position:absolute;right:80px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:rgba(44,127,232,0.12);pointer-events:none}
 .ph-top{display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1}
 .ph-icon-wrap{width:60px;height:60px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px}
 .ph-title{font-size:24px;font-weight:800;letter-spacing:-0.6px;margin-bottom:6px}
 .ph-sub{font-size:13px;opacity:0.65;max-width:520px;line-height:1.65}
-.ph-back-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
-  color:#fff;border-radius:var(--rsm);padding:0 16px;height:36px;
-  font-size:12px;font-weight:600;font-family:'Sora',sans-serif;
-  cursor:pointer;transition:all 0.15s;
-}
+.ph-back-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;border-radius:var(--rsm);padding:0 16px;height:36px;font-size:12px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;transition:all 0.15s;}
 .ph-back-btn:hover{background:rgba(255,255,255,0.2)}
 .ph-stats{display:flex;gap:24px;margin-top:20px;position:relative;z-index:1}
 .ph-stat{border-right:1px solid rgba(255,255,255,0.12);padding-right:24px}
 .ph-stat:last-child{border-right:none}
 .ph-stat-val{font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:-0.3px}
 .ph-stat-lbl{font-size:10px;opacity:0.45;text-transform:uppercase;letter-spacing:0.8px;margin-top:2px}
+
+/* ── HISTORY BUTTON on predict page ── */
+.predict-history-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);
+  color:#fff;border-radius:var(--rsm);padding:0 16px;height:36px;
+  font-size:12px;font-weight:600;font-family:'Sora',sans-serif;
+  cursor:pointer;transition:all 0.15s;position:relative;
+}
+.predict-history-btn:hover{background:rgba(255,255,255,0.22);transform:translateY(-1px)}
+.predict-history-btn i{font-size:15px}
+.hist-count-badge{
+  position:absolute;top:-6px;right:-6px;
+  background:#F7A0A0;color:#8B1A1A;
+  font-size:9px;font-weight:800;
+  width:16px;height:16px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid #1F0A5C;
+  transition:all 0.2s;
+}
+.hist-count-badge.hidden{display:none}
+
+/* ── HISTORY DRAWER ── */
+.history-overlay{
+  position:fixed;inset:0;background:rgba(4,33,63,0.45);
+  z-index:500;opacity:0;pointer-events:none;
+  transition:opacity 0.3s ease;
+  backdrop-filter:blur(2px);
+}
+.history-overlay.open{opacity:1;pointer-events:all}
+.history-drawer{
+  position:fixed;top:0;right:0;bottom:0;
+  width:420px;max-width:92vw;
+  background:var(--surface);
+  z-index:501;
+  transform:translateX(100%);
+  transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  display:flex;flex-direction:column;
+  box-shadow:-8px 0 40px rgba(4,33,63,0.18);
+}
+.history-drawer.open{transform:translateX(0)}
+.hd-header{
+  padding:20px 20px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,#0D0828,#1F0A5C);
+  color:#fff;
+  flex-shrink:0;
+}
+.hd-title-wrap{display:flex;align-items:center;gap:10px}
+.hd-icon{width:36px;height:36px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.hd-title{font-size:15px;font-weight:800;letter-spacing:-0.3px}
+.hd-subtitle{font-size:11px;opacity:0.5;margin-top:1px}
+.hd-close{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all 0.15s}
+.hd-close:hover{background:rgba(255,255,255,0.2)}
+.hd-filter-bar{
+  padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface2);
+  flex-shrink:0;
+}
+.hd-filter-btn{
+  flex:1;padding:6px 10px;border-radius:20px;
+  font-size:11px;font-weight:600;font-family:'Sora',sans-serif;
+  cursor:pointer;border:1.5px solid var(--border);
+  background:var(--surface);color:var(--muted);
+  transition:all 0.15s;text-align:center;
+}
+.hd-filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.hd-filter-btn.approved.active{background:var(--green-mid);border-color:var(--green-mid)}
+.hd-filter-btn.rejected.active{background:var(--red-mid);border-color:var(--red-mid)}
+.hd-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+.hd-stat{padding:12px 14px;text-align:center;border-right:1px solid var(--border)}
+.hd-stat:last-child{border-right:none}
+.hd-stat-val{font-size:17px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:-0.3px}
+.hd-stat-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;margin-top:2px;font-weight:600}
+.hd-body{flex:1;overflow-y:auto;padding:12px 0}
+.hd-no-data{padding:48px 24px;text-align:center;color:var(--hint)}
+.hd-no-data i{font-size:40px;display:block;margin-bottom:12px;opacity:0.3}
+.hd-no-data p{font-size:13px;line-height:1.6}
+.hd-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;
+  border-bottom:1px solid var(--border);
+  transition:background 0.12s;
+  cursor:default;
+}
+.hd-item:last-child{border-bottom:none}
+.hd-item:hover{background:var(--surface2)}
+.hd-item-icon{
+  width:40px;height:40px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.hd-item-icon.approved{background:var(--green-bg);color:var(--green)}
+.hd-item-icon.rejected{background:var(--red-bg);color:var(--red-mid)}
+.hd-item-body{flex:1;min-width:0}
+.hd-item-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.hd-item-verdict{font-size:12.5px;font-weight:700}
+.hd-item-verdict.approved{color:var(--green-mid)}
+.hd-item-verdict.rejected{color:var(--red-mid)}
+.hd-item-time{font-size:10px;color:var(--hint)}
+.hd-item-details{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.hd-chip{
+  font-size:10px;font-weight:600;
+  padding:2px 8px;border-radius:20px;
+  background:var(--surface2);color:var(--muted);
+  border:1px solid var(--border);
+  display:inline-flex;align-items:center;gap:4px;
+}
+.hd-chip i{font-size:10px;color:var(--blue)}
+.hd-item-conf{
+  display:flex;align-items:center;gap:6px;margin-top:8px;
+}
+.hd-conf-track{flex:1;height:4px;border-radius:3px;background:var(--border);overflow:hidden}
+.hd-conf-fill{height:100%;border-radius:3px;transition:width 0.6s ease}
+.hd-conf-fill.approved{background:linear-gradient(90deg,var(--green-mid),#7ADCA2)}
+.hd-conf-fill.rejected{background:linear-gradient(90deg,var(--red-mid),#F7A0A0)}
+.hd-conf-pct{font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.hd-conf-pct.approved{color:var(--green-mid)}
+.hd-conf-pct.rejected{color:var(--red-mid)}
+.hd-footer{
+  padding:12px 16px;border-top:1px solid var(--border);
+  display:flex;gap:8px;flex-shrink:0;
+  background:var(--surface2);
+}
+.hd-clear-btn{
+  flex:1;height:36px;border:1.5px solid var(--border);
+  border-radius:var(--rsm);background:var(--surface);
+  color:var(--muted);font-size:12px;font-weight:600;
+  font-family:'Sora',sans-serif;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:all 0.15s;
+}
+.hd-clear-btn:hover{border-color:var(--red-mid);color:var(--red-mid);background:var(--red-bg)}
 
 /* Prediction Form Panel */
 .predict-form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:24px;margin-bottom:16px}
@@ -263,16 +377,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .pf-section-title{font-size:13px;font-weight:700;color:var(--text)}
 
 /* Main AI Button */
-.ai-main-btn{
-  width:100%;height:56px;border:none;border-radius:12px;
-  background:linear-gradient(135deg,#1a0647 0%,#3D1A8C 50%,#6B3FD4 100%);
-  color:#fff;font-size:15px;font-weight:800;font-family:'Sora',sans-serif;
-  cursor:pointer;transition:all 0.25s cubic-bezier(0.22,1,0.36,1);
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  position:relative;overflow:hidden;letter-spacing:0.1px;
-  box-shadow:0 4px 20px rgba(61,26,140,0.4);
-  margin-top:6px;
-}
+.ai-main-btn{width:100%;height:56px;border:none;border-radius:12px;background:linear-gradient(135deg,#1a0647 0%,#3D1A8C 50%,#6B3FD4 100%);color:#fff;font-size:15px;font-weight:800;font-family:'Sora',sans-serif;cursor:pointer;transition:all 0.25s cubic-bezier(0.22,1,0.36,1);display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;letter-spacing:0.1px;box-shadow:0 4px 20px rgba(61,26,140,0.4);margin-top:6px;}
 .ai-main-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 32px rgba(61,26,140,0.55)}
 .ai-main-btn:active:not(:disabled){transform:translateY(0)}
 .ai-main-btn:disabled{opacity:0.7;cursor:not-allowed;transform:none}
@@ -439,6 +544,63 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   </div>
 </div>
 
+<!-- HISTORY DRAWER OVERLAY -->
+<div class="history-overlay" id="historyOverlay" onclick="closeHistoryDrawer()"></div>
+
+<!-- HISTORY DRAWER -->
+<div class="history-drawer" id="historyDrawer">
+  <div class="hd-header">
+    <div class="hd-title-wrap">
+      <div class="hd-icon"><i class="ti ti-clock-history"></i></div>
+      <div>
+        <div class="hd-title">Eligibility Check History</div>
+        <div class="hd-subtitle">All AI prediction results this session</div>
+      </div>
+    </div>
+    <div class="hd-close" onclick="closeHistoryDrawer()"><i class="ti ti-x"></i></div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="hd-stats">
+    <div class="hd-stat">
+      <div class="hd-stat-val" id="hd-stat-total" style="color:var(--blue)">0</div>
+      <div class="hd-stat-lbl">Total Checks</div>
+    </div>
+    <div class="hd-stat">
+      <div class="hd-stat-val" id="hd-stat-approved" style="color:var(--green-mid)">0</div>
+      <div class="hd-stat-lbl">Approved</div>
+    </div>
+    <div class="hd-stat">
+      <div class="hd-stat-val" id="hd-stat-rejected" style="color:var(--red-mid)">0</div>
+      <div class="hd-stat-lbl">Rejected</div>
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="hd-filter-bar">
+    <button class="hd-filter-btn active" id="hdf-all" onclick="filterHistory('all')">All</button>
+    <button class="hd-filter-btn approved" id="hdf-approved" onclick="filterHistory('approved')"><i class="ti ti-circle-check" style="font-size:11px"></i> Approved</button>
+    <button class="hd-filter-btn rejected" id="hdf-rejected" onclick="filterHistory('rejected')"><i class="ti ti-circle-x" style="font-size:11px"></i> Rejected</button>
+  </div>
+
+  <!-- History list -->
+  <div class="hd-body" id="hdBody">
+    <div class="hd-no-data">
+      <i class="ti ti-history"></i>
+      <p>No checks yet.<br>Run the AI model to see results here.</p>
+    </div>
+  </div>
+
+  <div class="hd-footer">
+    <button class="hd-clear-btn" onclick="clearHistory()">
+      <i class="ti ti-trash"></i>Clear History
+    </button>
+    <button class="hd-clear-btn" style="flex:2;background:var(--navy);color:#fff;border-color:var(--navy)" onclick="closeHistoryDrawer()">
+      <i class="ti ti-arrow-right"></i>Close
+    </button>
+  </div>
+</div>
+
 <!-- APP -->
 <div id="appWrap">
 <div class="app-inner">
@@ -466,7 +628,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
     <div class="sb-sec">Products</div>
     <button class="nav-item" onclick="showPage('loans',this)"><i class="ti ti-coin"></i>My Loans</button>
     <button class="nav-item" onclick="showPage('apply',this)"><i class="ti ti-file-plus"></i>Apply for Loan</button>
-    <button class="nav-item" onclick="showPage('predict',this)"><i class="ti ti-brain"></i>AI Eligibility Check</button>
+    <button class="nav-item" onclick="showPage('predict',this)"><i class="ti ti-brain"></i>loan Eligibility Check</button>
     <div class="sb-sec">Account</div>
     <button class="nav-item" onclick="showPage('profile',this)"><i class="ti ti-user-circle"></i>Profile & KYC</button>
     <button class="nav-item" onclick="showPage('settings',this)"><i class="ti ti-settings"></i>Settings</button>
@@ -566,36 +728,24 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- APPLY LOAN PAGE — form only, no prediction                    -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- APPLY LOAN PAGE -->
   <div class="page" id="page-apply">
     <div style="margin-bottom:22px">
       <div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">Apply for a Loan</div>
       <div style="font-size:12px;color:var(--muted);margin-top:3px">Fill in your loan details below, then check eligibility on the AI Eligibility page</div>
     </div>
-
-    <!-- Step 1 -->
     <div class="apply-step-label">
       <div class="apply-step-num">1</div>
-      <div>
-        <div class="apply-step-title">Select Loan Type</div>
-        <div class="apply-step-sub">Choose the loan you want to apply for</div>
-      </div>
+      <div><div class="apply-step-title">Select Loan Type</div><div class="apply-step-sub">Choose the loan you want to apply for</div></div>
     </div>
     <div class="loan-type-grid">
       <div class="lt-card sel" id="lt-home" onclick="selectLoanType('home','Home Loan',this)"><span class="lt-emoji">🏠</span><div class="lt-name">Home Loan</div><div class="lt-rate">From 8.5% p.a. · Up to ₹1 Cr</div></div>
       <div class="lt-card" id="lt-personal" onclick="selectLoanType('personal','Personal Loan',this)"><span class="lt-emoji">💼</span><div class="lt-name">Personal Loan</div><div class="lt-rate">From 10.5% p.a. · Up to ₹25L</div></div>
       <div class="lt-card" id="lt-vehicle" onclick="selectLoanType('vehicle','Vehicle Loan',this)"><span class="lt-emoji">🚗</span><div class="lt-name">Vehicle Loan</div><div class="lt-rate">From 9.0% p.a. · Up to ₹50L</div></div>
     </div>
-
-    <!-- Step 2 -->
     <div class="apply-step-label">
       <div class="apply-step-num">2</div>
-      <div>
-        <div class="apply-step-title">Applicant & Financial Details</div>
-        <div class="apply-step-sub">Enter your financial & employment information</div>
-      </div>
+      <div><div class="apply-step-title">Applicant & Financial Details</div><div class="apply-step-sub">Enter your financial & employment information</div></div>
     </div>
     <div class="card" style="margin-bottom:0">
       <div class="fr">
@@ -610,8 +760,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
         <div class="field"><label>Loan Term (Years)</label><input type="number" id="loan_term" placeholder="e.g. 15" oninput="syncToPredict()"/></div>
         <div class="field"><label>Your CIBIL Score</label><input type="number" id="cibil_score" placeholder="300 – 900" min="300" max="900" oninput="syncToPredict()"/></div>
       </div>
-
-      <!-- EMI Calculator -->
       <div class="emi-calc-card">
         <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px;display:flex;align-items:center;gap:5px"><i class="ti ti-calculator" style="font-size:13px;color:var(--blue)"></i>EMI Calculator</div>
         <div class="fr" style="gap:8px;margin-bottom:8px">
@@ -629,8 +777,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
         </div>
       </div>
     </div>
-
-    <!-- CTA Banner → Prediction Page -->
     <div class="predict-cta-banner">
       <div class="pcta-left">
         <div class="pcta-tag"><i class="ti ti-brain" style="font-size:11px"></i>AI-POWERED</div>
@@ -645,18 +791,14 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
       </div>
       <div class="pcta-right">
         <button class="goto-predict-btn" onclick="gotoPredict()">
-          <i class="ti ti-brain"></i>
-          Get Instant Decision
-          <i class="ti ti-arrow-right" style="font-size:16px;opacity:0.7"></i>
+          <i class="ti ti-brain"></i>Get Instant Decision<i class="ti ti-arrow-right" style="font-size:16px;opacity:0.7"></i>
         </button>
         <div style="font-size:10.5px;color:rgba(255,255,255,0.45);text-align:center;margin-top:8px">Your form data carries over automatically</div>
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- AI ELIGIBILITY / PREDICTION PAGE                              -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- AI ELIGIBILITY / PREDICTION PAGE -->
   <div class="page" id="page-predict">
 
     <!-- Hero -->
@@ -664,10 +806,20 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
       <div class="ph-top">
         <div>
           <div class="ph-icon-wrap"><i class="ti ti-brain" style="font-size:28px;color:#C4B5FD"></i></div>
-          <div class="ph-title">AI Eligibility Check</div>
+          <div class="ph-title">loan Eligibility Check</div>
           <div class="ph-sub">Our machine learning model instantly analyses your credit profile and gives you a real-time loan approval decision — no waiting, no paperwork.</div>
         </div>
-        <button class="ph-back-btn" onclick="showPage('apply',null)"><i class="ti ti-arrow-left"></i>Back to Apply</button>
+        <!-- Topbar buttons: History + Back -->
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;position:relative;z-index:2">
+          <!-- HISTORY BUTTON -->
+          <button class="predict-history-btn" id="historyToggleBtn" onclick="openHistoryDrawer()">
+            <i class="ti ti-clock-history"></i>
+            History
+            <div class="hist-count-badge hidden" id="histCountBadge">0</div>
+          </button>
+          <!-- Back button -->
+          <button class="ph-back-btn" onclick="showPage('apply',null)"><i class="ti ti-arrow-left"></i>Back to Apply</button>
+        </div>
       </div>
     </div>
 
@@ -681,7 +833,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
             <div class="pf-section-title">Credit Profile</div>
           </div>
 
-          <!-- Saved data chips from Apply page -->
           <div id="savedDataInfo" style="margin-bottom:14px"></div>
 
           <div class="field"><label>Education Level</label>
@@ -709,10 +860,8 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
             <div class="field"><label>CIBIL Score</label><input type="number" id="p_cibil" placeholder="300–900" min="300" max="900"/></div>
           </div>
 
-          <!-- Error box -->
           <div class="err-box" id="pErrBox"><i class="ti ti-alert-circle"></i><span id="pErrTxt"></span></div>
 
-          <!-- THE AI PREDICTION BUTTON -->
           <button class="ai-main-btn" id="aiMainBtn" onclick="runAI()">
             <i class="ti ti-sparkles" id="aiMainIcon" style="font-size:18px"></i>
             <span id="aiMainTxt">Run AI Model — Get Instant Decision</span>
@@ -725,33 +874,16 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
         <div class="card" style="padding:16px">
           <div class="card-title" style="margin-bottom:12px"><i class="ti ti-chart-bar"></i>CIBIL Score Guide</div>
           <div style="display:flex;flex-direction:column;gap:7px">
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--green-mid);flex-shrink:0"></div>
-              <div style="font-size:12px;font-weight:600;flex:1">750 – 900</div>
-              <div style="font-size:11.5px;color:var(--green)">Excellent — High approval chance</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--blue-mid);flex-shrink:0"></div>
-              <div style="font-size:12px;font-weight:600;flex:1">700 – 749</div>
-              <div style="font-size:11.5px;color:var(--blue)">Good — Likely approved</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--amber-mid);flex-shrink:0"></div>
-              <div style="font-size:12px;font-weight:600;flex:1">600 – 699</div>
-              <div style="font-size:11.5px;color:var(--amber)">Fair — Conditional approval</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--red-mid);flex-shrink:0"></div>
-              <div style="font-size:12px;font-weight:600;flex:1">300 – 599</div>
-              <div style="font-size:11.5px;color:var(--red-mid)">Poor — High rejection risk</div>
-            </div>
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:10px;height:10px;border-radius:50%;background:var(--green-mid);flex-shrink:0"></div><div style="font-size:12px;font-weight:600;flex:1">750 – 900</div><div style="font-size:11.5px;color:var(--green)">Excellent — High approval chance</div></div>
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue-mid);flex-shrink:0"></div><div style="font-size:12px;font-weight:600;flex:1">700 – 749</div><div style="font-size:11.5px;color:var(--blue)">Good — Likely approved</div></div>
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:10px;height:10px;border-radius:50%;background:var(--amber-mid);flex-shrink:0"></div><div style="font-size:12px;font-weight:600;flex:1">600 – 699</div><div style="font-size:11.5px;color:var(--amber)">Fair — Conditional approval</div></div>
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:10px;height:10px;border-radius:50%;background:var(--red-mid);flex-shrink:0"></div><div style="font-size:12px;font-weight:600;flex:1">300 – 599</div><div style="font-size:11.5px;color:var(--red-mid)">Poor — High rejection risk</div></div>
           </div>
         </div>
       </div>
 
       <!-- RIGHT: Result area -->
       <div>
-        <!-- Placeholder -->
         <div id="predictResultPlaceholder" style="background:var(--surface);border:2px dashed var(--border);border-radius:var(--r);padding:48px 24px;text-align:center">
           <div style="width:72px;height:72px;background:var(--purple-bg);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
             <i class="ti ti-chart-dots" style="font-size:36px;color:rgba(61,26,140,0.35)"></i>
@@ -760,7 +892,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
           <div style="font-size:12.5px;color:var(--hint);line-height:1.7">Fill your credit details and click<br><strong style="color:var(--purple)">"Run AI Model"</strong> to get an instant decision</div>
         </div>
 
-        <!-- Result Card (shown after prediction) -->
         <div class="ai-result-card" id="aiResultCard" style="display:none">
           <div class="arc-header">
             <div class="arc-icon-wrap" id="arcIconWrap"><i id="arcIcon" style="font-size:24px"></i></div>
@@ -780,7 +911,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
           </div>
         </div>
 
-        <!-- Apply Now button shown after approval -->
         <div id="applyNowWrap" style="display:none;margin-top:14px">
           <button class="btn btn-primary btn-full btn-lg" onclick="finaliseApplication()">
             <i class="ti ti-file-check"></i>Submit Application to Bank
@@ -1002,6 +1132,7 @@ function loadUserIntoApp(user){
 
 function doLogout(){
   clearSession();window._currentUser=null;
+  _predictionHistory=[];
   document.getElementById('authScreen').style.display='flex';
   document.getElementById('appWrap').style.display='none';
   document.getElementById('loginId').value='';
@@ -1097,18 +1228,14 @@ function syncToPredict(){
   if(cibil)document.getElementById('p_cibil').value=cibil;
 }
 
-// ─── Navigate to predict page with data carry-over ───────────────────────────
 function gotoPredict(){
   syncToPredict();
-  // Also sync radio buttons
   const edu=document.querySelector('input[name="education"]:checked').value;
   const emp=document.querySelector('input[name="self_employed"]:checked').value;
   if(edu==='Graduate'){document.getElementById('p_edu-g').checked=true}
   else{document.getElementById('p_edu-ng').checked=true}
   if(emp==='No'){document.getElementById('p_se-no').checked=true}
   else{document.getElementById('p_se-yes').checked=true}
-
-  // Show chips on predict page
   const income=document.getElementById('p_income').value;
   const loanAmt=document.getElementById('p_loan_amount').value;
   const term=document.getElementById('p_loan_term').value;
@@ -1124,9 +1251,7 @@ function gotoPredict(){
   }else{
     infoEl.innerHTML=`<div class="no-saved-data"><i class="ti ti-info-circle"></i>No data from Apply form found — please fill the fields below</div>`;
   }
-
   showPage('predict',null);
-  // Highlight the sidebar item
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>{
     if(n.textContent.includes('AI Eligibility'))n.classList.add('active');
@@ -1166,6 +1291,113 @@ function setAIBtnState(state){
   }
 }
 
+// ─── PREDICTION HISTORY (session memory) ─────────────────────────────────────
+let _predictionHistory = [];
+let _historyFilter = 'all';
+
+function addToHistory(entry){
+  _predictionHistory.unshift(entry); // newest first
+  updateHistoryBadge();
+  renderHistoryDrawer();
+}
+
+function updateHistoryBadge(){
+  const badge=document.getElementById('histCountBadge');
+  const count=_predictionHistory.length;
+  if(count>0){
+    badge.textContent=count>99?'99+':count;
+    badge.classList.remove('hidden');
+  }else{
+    badge.classList.add('hidden');
+  }
+  // Update stats
+  const approved=_predictionHistory.filter(h=>h.approved).length;
+  const rejected=_predictionHistory.filter(h=>!h.approved).length;
+  document.getElementById('hd-stat-total').textContent=count;
+  document.getElementById('hd-stat-approved').textContent=approved;
+  document.getElementById('hd-stat-rejected').textContent=rejected;
+}
+
+function filterHistory(filter){
+  _historyFilter=filter;
+  document.querySelectorAll('.hd-filter-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('hdf-'+filter).classList.add('active');
+  renderHistoryDrawer();
+}
+
+function renderHistoryDrawer(){
+  const body=document.getElementById('hdBody');
+  let items=_predictionHistory;
+  if(_historyFilter==='approved') items=items.filter(h=>h.approved);
+  if(_historyFilter==='rejected') items=items.filter(h=>!h.approved);
+
+  if(!items.length){
+    const emptyMsg=_historyFilter==='all'
+      ? 'No checks yet.<br>Run the AI model to see results here.'
+      : `No ${_historyFilter} results found.`;
+    body.innerHTML=`<div class="hd-no-data"><i class="ti ti-history"></i><p>${emptyMsg}</p></div>`;
+    return;
+  }
+
+  body.innerHTML=items.map((h,i)=>{
+    const status=h.approved?'approved':'rejected';
+    const icon=h.approved?'ti-circle-check':'ti-circle-x';
+    const verdict=h.approved?'Loan Approved':'Loan Eligibility Declined';
+    const timeStr=new Date(h.timestamp).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    const dateStr=new Date(h.timestamp).toLocaleDateString('en-IN',{day:'2-digit',month:'short'});
+    const ratio=((h.loanAmt/h.income)*100).toFixed(1);
+    return `<div class="hd-item">
+      <div class="hd-item-icon ${status}"><i class="ti ${icon}"></i></div>
+      <div class="hd-item-body">
+        <div class="hd-item-top">
+          <span class="hd-item-verdict ${status}">${verdict}</span>
+          <span class="hd-item-time">${dateStr} · ${timeStr}</span>
+        </div>
+        <div class="hd-item-details">
+          <span class="hd-chip"><i class="ti ti-chart-bar"></i>CIBIL ${h.cibil}</span>
+          <span class="hd-chip"><i class="ti ti-currency-rupee"></i>₹${Number(h.loanAmt).toLocaleString('en-IN')}</span>
+          <span class="hd-chip"><i class="ti ti-calendar"></i>${h.term}y</span>
+          <span class="hd-chip"><i class="ti ti-percentage"></i>${ratio}% ratio</span>
+          <span class="hd-chip">${h.edu==='Graduate'?'🎓':'📚'} ${h.edu}</span>
+          <span class="hd-chip">${h.emp==='No'?'💼 Salaried':'🏢 Self-Employed'}</span>
+        </div>
+        <div class="hd-item-conf">
+          <div class="hd-conf-track"><div class="hd-conf-fill ${status}" style="width:${h.confidence}%"></div></div>
+          <span class="hd-conf-pct ${status}">${h.confidence}%</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openHistoryDrawer(){
+  document.getElementById('historyDrawer').classList.add('open');
+  document.getElementById('historyOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeHistoryDrawer(){
+  document.getElementById('historyDrawer').classList.remove('open');
+  document.getElementById('historyOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function clearHistory(){
+  if(!_predictionHistory.length) return;
+  if(!confirm('Clear all '+ _predictionHistory.length +' prediction checks from history?')) return;
+  _predictionHistory=[];
+  _historyFilter='all';
+  document.querySelectorAll('.hd-filter-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('hdf-all').classList.add('active');
+  updateHistoryBadge();
+  renderHistoryDrawer();
+}
+
+// Keyboard shortcut: Escape to close drawer
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeHistoryDrawer();
+});
+
 // ─── Run AI Prediction ────────────────────────────────────────────────────────
 async function runAI(){
   const income =parseFloat(document.getElementById('p_income').value);
@@ -1199,6 +1431,7 @@ async function runAI(){
       loan_term:term,cibil_score:cibil
     });
     const approved=pred.approved===true;
+    const conf=computeConf(approved,cibil,loanAmt,income,term,pred.details||null);
 
     const user=window._currentUser;
     if(user){
@@ -1212,12 +1445,16 @@ async function runAI(){
       refreshDashboard();
     }
 
+    // Save to history
+    addToHistory({approved,cibil,loanAmt,income,term,edu,emp,confidence:conf,timestamp:Date.now()});
     renderResultCard(approved,cibil,loanAmt,income,term,edu,emp,pred.details||null,false);
     setAIBtnState(approved?'approved':'rejected');
     if(approved)document.getElementById('applyNowWrap').style.display='block';
 
   }catch(err){
     const approved=cibil>=650&&(loanAmt/income)<=0.5&&term<=20;
+    const conf=computeConf(approved,cibil,loanAmt,income,term,null);
+    addToHistory({approved,cibil,loanAmt,income,term,edu,emp,confidence:conf,timestamp:Date.now()});
     renderResultCard(approved,cibil,loanAmt,income,term,edu,emp,null,true);
     setAIBtnState(approved?'approved':'rejected');
     if(approved)document.getElementById('applyNowWrap').style.display='block';
@@ -1226,21 +1463,12 @@ async function runAI(){
   setTimeout(()=>setAIBtnState('idle'),5000);
 }
 
-function renderResultCard(approved,cibil,loanAmt,income,term,edu,emp,details=null,isLocal=false){
-  const card=document.getElementById('aiResultCard');
-  const placeholder=document.getElementById('predictResultPlaceholder');
-  card.className='ai-result-card '+(approved?'approved':'rejected');
-  document.getElementById('arcIcon').className=approved?'ti ti-circle-check':'ti ti-circle-x';
-  const ratio=loanAmt/income;
-  document.getElementById('arcVerdict').textContent=approved?'Loan Approved ✓':'Application Declined';
-  document.getElementById('arcReason').textContent=approved
-    ?`Your credit profile meets our lending criteria.${isLocal?' (Rule-based fallback)':''}`
-    :`Your profile doesn't meet current credit requirements. Review the factors below.${isLocal?' (Rule-based fallback)':''}`;
-
+function computeConf(approved,cibil,loanAmt,income,term,details){
   let conf=0;
   if(approved){
     conf=60;
     if(cibil>=750)conf+=15;else if(cibil>=700)conf+=10;else if(cibil>=650)conf+=5;
+    const ratio=loanAmt/income;
     if(ratio<=0.3)conf+=15;else if(ratio<=0.4)conf+=8;else if(ratio<=0.5)conf+=3;
     if(term<=15)conf+=10;else if(term<=20)conf+=5;
     conf=Math.min(conf,97);
@@ -1252,7 +1480,21 @@ function renderResultCard(approved,cibil,loanAmt,income,term,edu,emp,details=nul
     conf=Math.round((details.total_score/maxScore)*100);
     conf=Math.max(5,Math.min(conf,99));
   }
+  return conf;
+}
 
+function renderResultCard(approved,cibil,loanAmt,income,term,edu,emp,details=null,isLocal=false){
+  const card=document.getElementById('aiResultCard');
+  const placeholder=document.getElementById('predictResultPlaceholder');
+  card.className='ai-result-card '+(approved?'approved':'rejected');
+  document.getElementById('arcIcon').className=approved?'ti ti-circle-check':'ti ti-circle-x';
+  const ratio=loanAmt/income;
+  document.getElementById('arcVerdict').textContent=approved?'Loan Approved ✓':'Loan Eligibility Declined';
+  document.getElementById('arcReason').textContent=approved
+    ?`Your credit profile meets our lending criteria.${isLocal?' (Rule-based fallback)':''}`
+    :`Connect Bank branch support is available to help you with your application.${isLocal?' (Rule-based fallback)':''}`;
+
+  const conf=computeConf(approved,cibil,loanAmt,income,term,details);
   document.getElementById('arcConfPct').textContent=conf+'%';
   setTimeout(()=>{document.getElementById('arcBarFill').style.width=conf+'%'},100);
 
@@ -1349,7 +1591,7 @@ const PM={
   transactions:['Loan History','/ History'],
   loans:['My Loans','/ Lending'],
   apply:['Apply for Loan','/ Apply'],
-  predict:['AI Eligibility Check','/ Prediction'],
+  predict:['loan Eligibility Check','/ Prediction'],
   profile:['Profile & KYC','/ Profile'],
   settings:['Settings','/ Preferences'],
   support:['Help & Support','/ Support'],
