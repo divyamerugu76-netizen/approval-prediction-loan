@@ -260,10 +260,12 @@ def predict(body: PredictIn):
 def root():
     return {"status": "NexaBank API running ✓"}
 
-import os
+if __name__ == "__main__":
+    import uvicorn
+    import os
 
-uvicorn.run(
-    app,
-    host="0.0.0.0",
-    port=int(os.environ.get("PORT", 7860))
-)
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 7860))
+    )
