@@ -9,7 +9,7 @@ from typing import Optional
 import mysql.connector
 import hashlib, random, string, re
 from datetime import datetime
-
+from fastapi.responses import FileResponse
 import uvicorn
 
 DB_CONFIG = {
@@ -258,7 +258,7 @@ def predict(body: PredictIn):
 # ──────────────────────────────────────────────────────────────────────────────
 @app.get("/")
 def root():
-    return {"status": "NexaBank API running ✓"}
+    return FileResponse("user.html")
 
 if __name__ == "__main__":
     import uvicorn
