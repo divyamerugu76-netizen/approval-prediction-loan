@@ -4,24 +4,22 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
-import psycopg2
-import psycopg2.extras
+import pg8000.native
 import hashlib, random, string
-from datetime import datetime
+from datetime import datetime, date
 from fastapi.responses import FileResponse
 import uvicorn
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Supabase PostgreSQL connection config
-# Replace with your actual Supabase DB password from:
-# Supabase Dashboard → Settings → Database → Connection string
 # ──────────────────────────────────────────────────────────────────────────────
 DB_CONFIG = {
-    "host":     "aws-0-ap-northeast-1.pooler.supabase.com",   # Supabase pooler host
-    "port":     6543,                                          # Supabase pooler port (Transaction mode)
-    "user":     "postgres.rorsnqtkwkzcoultokvs",              # Supabase project user
-    "password": "YOUR_SUPABASE_DB_PASSWORD",                  # ← replace with your DB password
-    "dbname":   "postgres",
+    "host":     "aws-0-ap-northeast-1.pooler.supabase.com",
+    "port":     6543,
+    "user":     "postgres.rorsnqtkwkzcoultokvs",
+    "password": "YOUR_SUPABASE_DB_PASSWORD",   # ← replace with your DB password
+    "database": "postgres",
+    "ssl_context": True,
 }
 
 app = FastAPI(title="NexaBank API", version="1.0.0")
@@ -38,7 +36,17 @@ app.add_middleware(
 # DB helpers
 # ──────────────────────────────────────────────────────────────────────────────
 def get_conn():
-    return psycopg2.connect(**DB_CONFIG, cursor_factory=psycopg2.extras.RealDictCursor)
+    return pg8000.native.Connection(**DB_CONFIG)
+
+def rows_as_dicts(conn, query, params=()):
+    """Execute query and return list of dicts."""
+    result = conn.run(query, *params)
+    cols   = [c["name"] for c in conn.columns]
+    return [dict(zip(cols, row)) for row in result]
+
+def row_as_dict(conn, query, params=()):
+    rows = rows_as_dicts(conn, query, params)
+    return rows[0] if rows else None
 
 def hash_pw(pw: str) -> str:
     return hashlib.sha256(pw.encode()).hexdigest()
@@ -46,11 +54,19 @@ def hash_pw(pw: str) -> str:
 def gen_ref(prefix="LN") -> str:
     return prefix + "-" + "".join(random.choices(string.digits, k=8))
 
-def next_customer_id(cursor) -> str:
-    cursor.execute("SELECT MAX(id) AS max_id FROM users")
-    row = cursor.fetchone()
+def next_customer_id(conn) -> str:
+    row = row_as_dict(conn, "SELECT MAX(id) AS max_id FROM users")
     nxt = (row["max_id"] or 10000) + 1
     return f"CUST-{nxt}"
+
+def serialize(obj):
+    """Convert datetime/date to string for JSON."""
+    if isinstance(obj, (datetime, date)):
+        return obj.isoformat()
+    return obj
+
+def serialize_row(row: dict) -> dict:
+    return {k: serialize(v) for k, v in row.items()}
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Pydantic models
@@ -93,53 +109,40 @@ class PredictIn(BaseModel):
 @app.post("/auth/register")
 def register(body: RegisterIn):
     conn = get_conn()
-    cur  = conn.cursor()
+    try:
+        if row_as_dict(conn, "SELECT id FROM users WHERE email=:1", (body.email,)):
+            raise HTTPException(400, "Email already registered")
+        if row_as_dict(conn, "SELECT id FROM users WHERE mobile=:1", (body.mobile,)):
+            raise HTTPException(400, "Mobile number already registered")
 
-    # duplicate checks
-    cur.execute("SELECT id FROM users WHERE email=%s", (body.email,))
-    if cur.fetchone():
+        cid = next_customer_id(conn)
+        conn.run("""
+            INSERT INTO users (customer_id, first_name, last_name, email, mobile, dob, gender, password)
+            VALUES (:1, :2, :3, :4, :5, :6, :7, :8)
+        """, cid, body.first_name, body.last_name, body.email, body.mobile,
+             body.dob, body.gender, hash_pw(body.password))
+    finally:
         conn.close()
-        raise HTTPException(400, "Email already registered")
-    cur.execute("SELECT id FROM users WHERE mobile=%s", (body.mobile,))
-    if cur.fetchone():
-        conn.close()
-        raise HTTPException(400, "Mobile number already registered")
 
-    cid = next_customer_id(cur)
-
-    cur.execute("""
-        INSERT INTO users (customer_id, first_name, last_name, email, mobile, dob, gender, password)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-    """, (cid, body.first_name, body.last_name, body.email, body.mobile,
-          body.dob, body.gender, hash_pw(body.password)))
-
-    conn.commit()
-    conn.close()
     return {"message": "Account created", "customer_id": cid}
 
 
 @app.post("/auth/login")
 def login(body: LoginIn):
     conn = get_conn()
-    cur  = conn.cursor()
-
-    ident = body.identifier.strip()
-    cur.execute("""
-        SELECT * FROM users
-        WHERE customer_id=%s OR email=%s OR mobile=%s
-    """, (ident, ident, ident))
-    user = cur.fetchone()
-    conn.close()
+    try:
+        ident = body.identifier.strip()
+        user  = row_as_dict(conn, """
+            SELECT * FROM users
+            WHERE customer_id=:1 OR email=:2 OR mobile=:3
+        """, (ident, ident, ident))
+    finally:
+        conn.close()
 
     if not user or user["password"] != hash_pw(body.password):
         raise HTTPException(401, "Invalid credentials")
 
-    safe = {k: v for k, v in user.items() if k != "password"}
-    # convert datetime/date to string
-    for key, val in safe.items():
-        if isinstance(val, (datetime,)):
-            safe[key] = val.isoformat()
-
+    safe = {k: serialize(v) for k, v in user.items() if k != "password"}
     return {"message": "Login successful", "user": safe}
 
 
@@ -149,79 +152,63 @@ def login(body: LoginIn):
 @app.post("/loans/{customer_id}")
 def create_loan(customer_id: str, body: LoanIn):
     conn = get_conn()
-    cur  = conn.cursor()
+    try:
+        row = row_as_dict(conn, "SELECT id FROM users WHERE customer_id=:1", (customer_id,))
+        if not row:
+            raise HTTPException(404, "User not found")
+        user_id = row["id"]
 
-    cur.execute("SELECT id FROM users WHERE customer_id=%s", (customer_id,))
-    row = cur.fetchone()
-    if not row:
+        ref    = gen_ref("LN")
+        status = body.ai_assessment if body.ai_assessment in ("approved", "rejected") else "pending"
+
+        conn.run("""
+            INSERT INTO loans
+              (user_id, reference, loan_type, loan_type_name, amount, tenure_years,
+               cibil_score, income_annum, education, self_employed, ai_assessment, status)
+            VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12)
+        """, user_id, ref, body.loan_type, body.loan_type_name, body.amount,
+             body.tenure_years, body.cibil_score, body.income_annum,
+             body.education, body.self_employed, body.ai_assessment, status)
+    finally:
         conn.close()
-        raise HTTPException(404, "User not found")
-    user_id = row["id"]
 
-    ref    = gen_ref("LN")
-    status = body.ai_assessment if body.ai_assessment in ("approved", "rejected") else "pending"
-
-    cur.execute("""
-        INSERT INTO loans
-          (user_id, reference, loan_type, loan_type_name, amount, tenure_years,
-           cibil_score, income_annum, education, self_employed, ai_assessment, status)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-    """, (user_id, ref, body.loan_type, body.loan_type_name, body.amount,
-          body.tenure_years, body.cibil_score, body.income_annum,
-          body.education, body.self_employed, body.ai_assessment, status))
-
-    conn.commit()
-    conn.close()
     return {"message": "Loan saved", "reference": ref, "status": status}
 
 
 @app.get("/loans/{customer_id}")
 def get_loans(customer_id: str):
     conn = get_conn()
-    cur  = conn.cursor()
+    try:
+        row = row_as_dict(conn, "SELECT id FROM users WHERE customer_id=:1", (customer_id,))
+        if not row:
+            raise HTTPException(404, "User not found")
 
-    cur.execute("SELECT id FROM users WHERE customer_id=%s", (customer_id,))
-    row = cur.fetchone()
-    if not row:
+        loans = rows_as_dicts(conn, """
+            SELECT * FROM loans WHERE user_id=:1 ORDER BY created_at DESC
+        """, (row["id"],))
+    finally:
         conn.close()
-        raise HTTPException(404, "User not found")
 
-    cur.execute("""
-        SELECT * FROM loans WHERE user_id=%s ORDER BY created_at DESC
-    """, (row["id"],))
-    loans = cur.fetchall()
-    conn.close()
-
-    result = []
-    for loan in loans:
-        loan_dict = dict(loan)
-        if isinstance(loan_dict.get("created_at"), datetime):
-            loan_dict["created_at"] = loan_dict["created_at"].isoformat()
-        result.append(loan_dict)
-
-    return {"loans": result, "total": len(result)}
+    return {"loans": [serialize_row(l) for l in loans], "total": len(loans)}
 
 
 @app.get("/loans/{customer_id}/stats")
 def loan_stats(customer_id: str):
     conn = get_conn()
-    cur  = conn.cursor()
+    try:
+        row = row_as_dict(conn, "SELECT id FROM users WHERE customer_id=:1", (customer_id,))
+        if not row:
+            raise HTTPException(404, "User not found")
 
-    cur.execute("SELECT id FROM users WHERE customer_id=%s", (customer_id,))
-    row = cur.fetchone()
-    if not row:
+        stats = row_as_dict(conn, """
+            SELECT
+              COUNT(*) AS total,
+              SUM(CASE WHEN status='approved' THEN 1 ELSE 0 END) AS approved,
+              SUM(CASE WHEN status='rejected' THEN 1 ELSE 0 END) AS rejected
+            FROM loans WHERE user_id=:1
+        """, (row["id"],))
+    finally:
         conn.close()
-        raise HTTPException(404, "User not found")
-
-    cur.execute("""
-        SELECT
-          COUNT(*) AS total,
-          SUM(CASE WHEN status='approved' THEN 1 ELSE 0 END) AS approved,
-          SUM(CASE WHEN status='rejected' THEN 1 ELSE 0 END) AS rejected
-        FROM loans WHERE user_id=%s
-    """, (row["id"],))
-    stats = cur.fetchone()
-    conn.close()
 
     return {
         "total":    int(stats["total"]    or 0),
@@ -231,28 +218,23 @@ def loan_stats(customer_id: str):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# AI PREDICT route  (rule-based — swap for ML model if available)
+# AI PREDICT route
 # ──────────────────────────────────────────────────────────────────────────────
 @app.post("/predict")
 def predict(body: PredictIn):
     score     = 0
     threshold = 5
 
-    # CIBIL score weight (max 3 pts)
     if body.cibil_score >= 750:   score += 3
     elif body.cibil_score >= 650: score += 2
     elif body.cibil_score >= 550: score += 1
 
-    # Debt-to-income ratio (max 2 pts)
     ratio = body.loan_amount / max(body.income_annum, 1)
     if ratio <= 0.3:   score += 2
     elif ratio <= 0.5: score += 1
 
-    # Education bonus
     if body.education == "Graduate": score += 1
-
-    # Loan term bonus
-    if body.loan_term <= 15: score += 1
+    if body.loan_term <= 15:         score += 1
 
     approved = score >= threshold
 
