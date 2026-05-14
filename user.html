@@ -989,7 +989,9 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 </div>
 
 <script>
-const API = '';
+const API = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+  ? 'http://127.0.0.1:7860'
+  : '';
 const SESSION_KEY = 'nexabank_session';
 function getSession(){try{return JSON.parse(sessionStorage.getItem(SESSION_KEY))}catch{return null}}
 function saveSession(u){sessionStorage.setItem(SESSION_KEY,JSON.stringify(u))}
