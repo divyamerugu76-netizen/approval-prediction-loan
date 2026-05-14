@@ -1,4 +1,5 @@
 import os
+import ssl
 import hashlib
 import random
 import string
@@ -14,19 +15,19 @@ import uvicorn
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-import ssl
-
+# ── SSL Context for Supabase ──────────────────────────────────────────────────
 ssl_ctx = ssl.create_default_context()
 ssl_ctx.check_hostname = False
 ssl_ctx.verify_mode = ssl.CERT_NONE
 
+# ── DB Config (reads from environment variables) ──────────────────────────────
 DB_CONFIG = {
-    "host":        "db.rorsnqtkwkzcoultokvs.supabase.co",
-    "port":        5432,
-    "user":        "postgres",
+    "host":        os.environ.get("DB_HOST", "db.rorsnqtkwkzcoultokvs.supabase.co"),
+    "port":        int(os.environ.get("DB_PORT", 5432)),
+    "user":        os.environ.get("DB_USER", "postgres"),
     "password":    os.environ.get("DB_PASSWORD", "divya_23@10"),
-    "database":    "postgres",
-    "ssl_context": ssl_ctx,   # ← proper SSL context instead of True
+    "database":    os.environ.get("DB_NAME", "postgres"),
+    "ssl_context": ssl_ctx,
 }
 
 app = FastAPI(title="NexaBank API", version="1.0.0")
@@ -47,11 +48,6 @@ def get_conn():
         raise HTTPException(status_code=503, detail=f"Database connection failed: {str(e)}")
 
 def run_query(conn, query, **kwargs):
-    """
-    Execute a query using pg8000 native :param_name placeholders.
-    Pass params as keyword arguments: run_query(conn, query, email=x, id=y)
-    Returns list of dicts.
-    """
     result = conn.run(query, **kwargs)
     cols   = [c["name"] for c in conn.columns]
     return [dict(zip(cols, row)) for row in result]
@@ -120,12 +116,27 @@ def root():
         return JSONResponse(status_code=200, content={"status": "ok", "app": "NexaBank API v1.0.0"})
     return FileResponse(html_path)
 
+# ── Health check (also tests DB connection) ───────────────────────────────────
+@app.get("/health")
+def health():
+    try:
+        conn = get_conn()
+        conn.run("SELECT 1")
+        conn.close()
+        db_status = "connected"
+    except Exception as e:
+        db_status = f"error: {str(e)}"
+    return {
+        "status": "ok",
+        "database": db_status,
+        "timestamp": datetime.utcnow().isoformat()
+    }
+
 # ── AUTH ──────────────────────────────────────────────────────────────────────
 @app.post("/auth/register")
 def register(body: RegisterIn):
     conn = get_conn()
     try:
-        # pg8000 native uses :param_name placeholders with **kwargs
         if run_one(conn, "SELECT id FROM users WHERE email=:email", email=body.email):
             raise HTTPException(400, "Email already registered")
         if run_one(conn, "SELECT id FROM users WHERE mobile=:mobile", mobile=body.mobile):
@@ -284,12 +295,6 @@ def predict(body: PredictIn):
             "dti_ratio":   round(ratio * 100, 1),
         },
     }
-
-
-# ── HEALTH ────────────────────────────────────────────────────────────────────
-@app.get("/health")
-def health():
-    return {"status": "ok", "timestamp": datetime.utcnow().isoformat()}
 
 
 if __name__ == "__main__":
