@@ -192,14 +192,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .lh-date{font-size:11px;color:var(--hint)}
 .lh-right{text-align:right}
 .lh-amt{font-size:14px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px}
-
-/* ── APPLY PAGE: CTA Banner to Prediction ── */
-.predict-cta-banner{
-  background:linear-gradient(135deg,#1a0647 0%,#3D1A8C 50%,#6B3FD4 100%);
-  border-radius:var(--r);padding:28px 32px;color:#fff;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  margin-top:22px;position:relative;overflow:hidden;
-}
+.predict-cta-banner{background:linear-gradient(135deg,#1a0647 0%,#3D1A8C 50%,#6B3FD4 100%);border-radius:var(--r);padding:28px 32px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:22px;position:relative;overflow:hidden;}
 .predict-cta-banner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.06);pointer-events:none;}
 .predict-cta-banner::after{content:'';position:absolute;right:60px;bottom:-60px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none;}
 .pcta-left{position:relative;z-index:1}
@@ -213,8 +206,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .goto-predict-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
 .goto-predict-btn:active{transform:translateY(0)}
 .goto-predict-btn i{font-size:18px}
-
-/* ── PREDICTION PAGE ── */
 .predict-hero{background:linear-gradient(135deg,#0D0828 0%,#1F0A5C 40%,#3D1A8C 100%);border-radius:var(--r);padding:30px 32px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden;}
 .predict-hero::before{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(107,63,212,0.25);pointer-events:none}
 .predict-hero::after{content:'';position:absolute;right:80px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:rgba(44,127,232,0.12);pointer-events:none}
@@ -224,88 +215,28 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .ph-sub{font-size:13px;opacity:0.65;max-width:520px;line-height:1.65}
 .ph-back-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;border-radius:var(--rsm);padding:0 16px;height:36px;font-size:12px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;transition:all 0.15s;}
 .ph-back-btn:hover{background:rgba(255,255,255,0.2)}
-.ph-stats{display:flex;gap:24px;margin-top:20px;position:relative;z-index:1}
-.ph-stat{border-right:1px solid rgba(255,255,255,0.12);padding-right:24px}
-.ph-stat:last-child{border-right:none}
-.ph-stat-val{font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:-0.3px}
-.ph-stat-lbl{font-size:10px;opacity:0.45;text-transform:uppercase;letter-spacing:0.8px;margin-top:2px}
-
-/* ── HISTORY BUTTON on predict page ── */
-.predict-history-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);
-  color:#fff;border-radius:var(--rsm);padding:0 16px;height:36px;
-  font-size:12px;font-weight:600;font-family:'Sora',sans-serif;
-  cursor:pointer;transition:all 0.15s;position:relative;
-}
+.predict-history-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);color:#fff;border-radius:var(--rsm);padding:0 16px;height:36px;font-size:12px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;transition:all 0.15s;position:relative;}
 .predict-history-btn:hover{background:rgba(255,255,255,0.22);transform:translateY(-1px)}
 .predict-history-btn i{font-size:15px}
-.hist-count-badge{
-  position:absolute;top:-6px;right:-6px;
-  background:#F7A0A0;color:#8B1A1A;
-  font-size:9px;font-weight:800;
-  width:16px;height:16px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  border:2px solid #1F0A5C;
-  transition:all 0.2s;
-}
+.hist-count-badge{position:absolute;top:-6px;right:-6px;background:#F7A0A0;color:#8B1A1A;font-size:9px;font-weight:800;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #1F0A5C;transition:all 0.2s;}
 .hist-count-badge.hidden{display:none}
-
-/* ── HISTORY DRAWER ── */
-.history-overlay{
-  position:fixed;inset:0;background:rgba(4,33,63,0.45);
-  z-index:500;opacity:0;pointer-events:none;
-  transition:opacity 0.3s ease;
-  backdrop-filter:blur(2px);
-}
+.history-overlay{position:fixed;inset:0;background:rgba(4,33,63,0.45);z-index:500;opacity:0;pointer-events:none;transition:opacity 0.3s ease;backdrop-filter:blur(2px);}
 .history-overlay.open{opacity:1;pointer-events:all}
-.history-drawer{
-  position:fixed;top:0;right:0;bottom:0;
-  width:420px;max-width:92vw;
-  background:var(--surface);
-  z-index:501;
-  transform:translateX(100%);
-  transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
-  display:flex;flex-direction:column;
-  box-shadow:-8px 0 40px rgba(4,33,63,0.18);
-}
+.history-drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:92vw;background:var(--surface);z-index:501;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(4,33,63,0.18);}
 .history-drawer.open{transform:translateX(0)}
-.hd-header{
-  padding:20px 20px 16px;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  background:linear-gradient(135deg,#0D0828,#1F0A5C);
-  color:#fff;
-  flex-shrink:0;
-}
+.hd-header{padding:20px 20px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#0D0828,#1F0A5C);color:#fff;flex-shrink:0;}
 .hd-title-wrap{display:flex;align-items:center;gap:10px}
 .hd-icon{width:36px;height:36px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
 .hd-title{font-size:15px;font-weight:800;letter-spacing:-0.3px}
 .hd-subtitle{font-size:11px;opacity:0.5;margin-top:1px}
 .hd-close{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all 0.15s}
 .hd-close:hover{background:rgba(255,255,255,0.2)}
-.hd-filter-bar{
-  padding:12px 16px;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:8px;
-  background:var(--surface2);
-  flex-shrink:0;
-}
-.hd-filter-btn{
-  flex:1;padding:6px 10px;border-radius:20px;
-  font-size:11px;font-weight:600;font-family:'Sora',sans-serif;
-  cursor:pointer;border:1.5px solid var(--border);
-  background:var(--surface);color:var(--muted);
-  transition:all 0.15s;text-align:center;
-}
+.hd-filter-bar{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;background:var(--surface2);flex-shrink:0;}
+.hd-filter-btn{flex:1;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);transition:all 0.15s;text-align:center;}
 .hd-filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 .hd-filter-btn.approved.active{background:var(--green-mid);border-color:var(--green-mid)}
 .hd-filter-btn.rejected.active{background:var(--red-mid);border-color:var(--red-mid)}
-.hd-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border-bottom:1px solid var(--border);
-  flex-shrink:0;
-}
+.hd-stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);flex-shrink:0;}
 .hd-stat{padding:12px 14px;text-align:center;border-right:1px solid var(--border)}
 .hd-stat:last-child{border-right:none}
 .hd-stat-val{font-size:17px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:-0.3px}
@@ -314,20 +245,10 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .hd-no-data{padding:48px 24px;text-align:center;color:var(--hint)}
 .hd-no-data i{font-size:40px;display:block;margin-bottom:12px;opacity:0.3}
 .hd-no-data p{font-size:13px;line-height:1.6}
-.hd-item{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:14px 16px;
-  border-bottom:1px solid var(--border);
-  transition:background 0.12s;
-  cursor:default;
-}
+.hd-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);transition:background 0.12s;cursor:default;}
 .hd-item:last-child{border-bottom:none}
 .hd-item:hover{background:var(--surface2)}
-.hd-item-icon{
-  width:40px;height:40px;border-radius:11px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;
-}
+.hd-item-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .hd-item-icon.approved{background:var(--green-bg);color:var(--green)}
 .hd-item-icon.rejected{background:var(--red-bg);color:var(--red-mid)}
 .hd-item-body{flex:1;min-width:0}
@@ -337,17 +258,9 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .hd-item-verdict.rejected{color:var(--red-mid)}
 .hd-item-time{font-size:10px;color:var(--hint)}
 .hd-item-details{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.hd-chip{
-  font-size:10px;font-weight:600;
-  padding:2px 8px;border-radius:20px;
-  background:var(--surface2);color:var(--muted);
-  border:1px solid var(--border);
-  display:inline-flex;align-items:center;gap:4px;
-}
+.hd-chip{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--surface2);color:var(--muted);border:1px solid var(--border);display:inline-flex;align-items:center;gap:4px;}
 .hd-chip i{font-size:10px;color:var(--blue)}
-.hd-item-conf{
-  display:flex;align-items:center;gap:6px;margin-top:8px;
-}
+.hd-item-conf{display:flex;align-items:center;gap:6px;margin-top:8px;}
 .hd-conf-track{flex:1;height:4px;border-radius:3px;background:var(--border);overflow:hidden}
 .hd-conf-fill{height:100%;border-radius:3px;transition:width 0.6s ease}
 .hd-conf-fill.approved{background:linear-gradient(90deg,var(--green-mid),#7ADCA2)}
@@ -355,28 +268,13 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .hd-conf-pct{font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;white-space:nowrap}
 .hd-conf-pct.approved{color:var(--green-mid)}
 .hd-conf-pct.rejected{color:var(--red-mid)}
-.hd-footer{
-  padding:12px 16px;border-top:1px solid var(--border);
-  display:flex;gap:8px;flex-shrink:0;
-  background:var(--surface2);
-}
-.hd-clear-btn{
-  flex:1;height:36px;border:1.5px solid var(--border);
-  border-radius:var(--rsm);background:var(--surface);
-  color:var(--muted);font-size:12px;font-weight:600;
-  font-family:'Sora',sans-serif;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  transition:all 0.15s;
-}
+.hd-footer{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-shrink:0;background:var(--surface2);}
+.hd-clear-btn{flex:1;height:36px;border:1.5px solid var(--border);border-radius:var(--rsm);background:var(--surface);color:var(--muted);font-size:12px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.15s;}
 .hd-clear-btn:hover{border-color:var(--red-mid);color:var(--red-mid);background:var(--red-bg)}
-
-/* Prediction Form Panel */
 .predict-form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:24px;margin-bottom:16px}
 .pf-section-head{display:flex;align-items:center;gap:9px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 .pf-section-num{width:24px;height:24px;border-radius:50%;background:var(--purple-bg);color:var(--purple);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
 .pf-section-title{font-size:13px;font-weight:700;color:var(--text)}
-
-/* Main AI Button */
 .ai-main-btn{width:100%;height:56px;border:none;border-radius:12px;background:linear-gradient(135deg,#1a0647 0%,#3D1A8C 50%,#6B3FD4 100%);color:#fff;font-size:15px;font-weight:800;font-family:'Sora',sans-serif;cursor:pointer;transition:all 0.25s cubic-bezier(0.22,1,0.36,1);display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;letter-spacing:0.1px;box-shadow:0 4px 20px rgba(61,26,140,0.4);margin-top:6px;}
 .ai-main-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 32px rgba(61,26,140,0.55)}
 .ai-main-btn:active:not(:disabled){transform:translateY(0)}
@@ -389,8 +287,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 @keyframes shimmer{to{left:140%}}
 .btn-spinner{width:20px;height:20px;border:2.5px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* Result Card */
 .ai-result-card{display:none;border-radius:14px;margin-top:20px;animation:resultReveal 0.4s cubic-bezier(0.22,1,0.36,1);overflow:hidden}
 @keyframes resultReveal{from{opacity:0;transform:translateY(12px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .arc-header{padding:22px 24px 18px;display:flex;align-items:flex-start;gap:16px}
@@ -423,16 +319,11 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .arc-factor i{font-size:11px}
 .arc-factor.good{background:rgba(34,160,90,0.2);border-color:rgba(122,220,162,0.3)}
 .arc-factor.bad{background:rgba(216,50,50,0.2);border-color:rgba(247,160,160,0.3)}
-
-/* Saved data display on prediction page */
 .saved-data-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .sdc{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11.5px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:5px}
 .sdc i{font-size:12px;color:var(--blue)}
 .no-saved-data{background:var(--amber-bg);border:1px solid var(--border);border-radius:var(--rsm);padding:12px 16px;font-size:12.5px;color:var(--amber);display:flex;align-items:center;gap:8px;margin-bottom:16px}
-
-/* EMI Calculator */
 .emi-calc-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--rsm);padding:16px;margin-top:4px}
-
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .spinner-sm{width:14px;height:14px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none}
@@ -440,186 +331,77 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 </head>
 <body>
 
-<!-- AUTH SCREEN -->
 <div id="authScreen">
   <div class="auth-box">
     <div class="auth-logo">
       <div class="auth-logo-icon"><i class="ti ti-building-bank"></i></div>
-      <div><div class="auth-logo-name">NexaBank</div><div class="auth-logo-sub">Secure Banking Portal · MySQL Backend</div></div>
+      <div><div class="auth-logo-name">NexaBank</div><div class="auth-logo-sub">Secure Banking Portal</div></div>
     </div>
     <div class="auth-tabs">
       <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
       <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Create Account</button>
     </div>
-
-    <!-- LOGIN -->
     <div id="loginPanel">
       <div class="auth-title">Welcome back</div>
       <div class="auth-sub">Sign in to your NexaBank account securely.</div>
-      <div class="lf">
-        <label>Customer ID / Email / Mobile</label>
-        <input type="text" id="loginId" placeholder="e.g. CUST-10001 or email"/>
-      </div>
-      <div class="lf">
-        <label>Password</label>
-        <div class="pw-wrap">
-          <input type="password" id="loginPass" placeholder="Enter your password" onkeydown="if(event.key==='Enter')doLogin()"/>
-          <button class="pw-toggle" onclick="togglePw('loginPass',this)" tabindex="-1"><i class="ti ti-eye"></i></button>
-        </div>
-      </div>
+      <div class="lf"><label>Customer ID / Email / Mobile</label><input type="text" id="loginId" placeholder="e.g. CUST-10001 or email"/></div>
+      <div class="lf"><label>Password</label><div class="pw-wrap"><input type="password" id="loginPass" placeholder="Enter your password" onkeydown="if(event.key==='Enter')doLogin()"/><button class="pw-toggle" onclick="togglePw('loginPass',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div></div>
       <div class="auth-err" id="loginErr"><i class="ti ti-alert-circle"></i><span id="loginErrTxt"></span></div>
-      <button class="auth-btn" id="loginBtn" onclick="doLogin()">
-        <i class="ti ti-login"></i>Sign In Securely<div class="spinner-sm" id="loginSpin"></div>
-      </button>
+      <button class="auth-btn" id="loginBtn" onclick="doLogin()"><i class="ti ti-login"></i>Sign In Securely<div class="spinner-sm" id="loginSpin"></div></button>
       <div class="auth-hint">Don't have an account? <strong onclick="switchTab('register')">Create one free</strong></div>
     </div>
-
-    <!-- REGISTER -->
     <div id="registerPanel" style="display:none">
       <div class="auth-title">Create Account</div>
       <div class="auth-sub">Join NexaBank in under 2 minutes. No paperwork.</div>
       <div class="fr2">
-        <div class="lf">
-          <label>First Name *</label>
-          <input type="text" id="reg-fname" placeholder="First name" oninput="clearFieldErr('fname')"/>
-          <div class="field-err" id="err-fname"><i class="ti ti-alert-circle" style="font-size:12px"></i>First name is required</div>
-        </div>
-        <div class="lf">
-          <label>Last Name *</label>
-          <input type="text" id="reg-lname" placeholder="Last name" oninput="clearFieldErr('lname')"/>
-          <div class="field-err" id="err-lname"><i class="ti ti-alert-circle" style="font-size:12px"></i>Last name is required</div>
-        </div>
+        <div class="lf"><label>First Name *</label><input type="text" id="reg-fname" placeholder="First name" oninput="clearFieldErr('fname')"/><div class="field-err" id="err-fname"><i class="ti ti-alert-circle" style="font-size:12px"></i>First name is required</div></div>
+        <div class="lf"><label>Last Name *</label><input type="text" id="reg-lname" placeholder="Last name" oninput="clearFieldErr('lname')"/><div class="field-err" id="err-lname"><i class="ti ti-alert-circle" style="font-size:12px"></i>Last name is required</div></div>
       </div>
-      <div class="lf">
-        <label>Email Address *</label>
-        <input type="email" id="reg-email" placeholder="your@email.com" oninput="clearFieldErr('email')"/>
-        <div class="field-err" id="err-email"><i class="ti ti-alert-circle" style="font-size:12px"></i>Valid email address required</div>
-      </div>
-      <div class="lf">
-        <label>Mobile Number *</label>
-        <input type="tel" id="reg-mobile" placeholder="+91 XXXXX XXXXX" maxlength="15" oninput="clearFieldErr('mobile')"/>
-        <div class="field-err" id="err-mobile"><i class="ti ti-alert-circle" style="font-size:12px"></i>10-digit mobile number required</div>
-      </div>
+      <div class="lf"><label>Email Address *</label><input type="email" id="reg-email" placeholder="your@email.com" oninput="clearFieldErr('email')"/><div class="field-err" id="err-email"><i class="ti ti-alert-circle" style="font-size:12px"></i>Valid email address required</div></div>
+      <div class="lf"><label>Mobile Number *</label><input type="tel" id="reg-mobile" placeholder="+91 XXXXX XXXXX" maxlength="15" oninput="clearFieldErr('mobile')"/><div class="field-err" id="err-mobile"><i class="ti ti-alert-circle" style="font-size:12px"></i>10-digit mobile number required</div></div>
       <div class="fr2">
-        <div class="lf">
-          <label>Date of Birth *</label>
-          <input type="date" id="reg-dob" oninput="clearFieldErr('dob')"/>
-          <div class="field-err" id="err-dob"><i class="ti ti-alert-circle" style="font-size:12px"></i>Must be 18 years or older</div>
-        </div>
-        <div class="lf">
-          <label>Gender</label>
-          <select id="reg-gender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option></select>
-        </div>
+        <div class="lf"><label>Date of Birth *</label><input type="date" id="reg-dob" oninput="clearFieldErr('dob')"/><div class="field-err" id="err-dob"><i class="ti ti-alert-circle" style="font-size:12px"></i>Must be 18 years or older</div></div>
+        <div class="lf"><label>Gender</label><select id="reg-gender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option></select></div>
       </div>
-      <div class="lf">
-        <label>Password *</label>
-        <div class="pw-wrap">
-          <input type="password" id="reg-pass" placeholder="Min 8 characters" oninput="checkStrength();clearFieldErr('pass')"/>
-          <button class="pw-toggle" onclick="togglePw('reg-pass',this)" tabindex="-1"><i class="ti ti-eye"></i></button>
-        </div>
-        <div class="field-err" id="err-pass"><i class="ti ti-alert-circle" style="font-size:12px"></i>Password must be at least 8 characters</div>
-        <div class="pw-strength" id="pwStrength" style="display:none">
-          <div class="pw-bars"><div class="pw-bar" id="pb1"></div><div class="pw-bar" id="pb2"></div><div class="pw-bar" id="pb3"></div><div class="pw-bar" id="pb4"></div></div>
-          <div class="pw-label" id="pwLabel"></div>
-        </div>
-      </div>
-      <div class="lf">
-        <label>Confirm Password *</label>
-        <div class="pw-wrap">
-          <input type="password" id="reg-cpass" placeholder="Re-enter password" oninput="clearFieldErr('cpass')"/>
-          <button class="pw-toggle" onclick="togglePw('reg-cpass',this)" tabindex="-1"><i class="ti ti-eye"></i></button>
-        </div>
-        <div class="field-err" id="err-cpass"><i class="ti ti-alert-circle" style="font-size:12px"></i>Passwords do not match</div>
-      </div>
+      <div class="lf"><label>Password *</label><div class="pw-wrap"><input type="password" id="reg-pass" placeholder="Min 8 characters" oninput="checkStrength();clearFieldErr('pass')"/><button class="pw-toggle" onclick="togglePw('reg-pass',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div><div class="field-err" id="err-pass"><i class="ti ti-alert-circle" style="font-size:12px"></i>Password must be at least 8 characters</div><div class="pw-strength" id="pwStrength" style="display:none"><div class="pw-bars"><div class="pw-bar" id="pb1"></div><div class="pw-bar" id="pb2"></div><div class="pw-bar" id="pb3"></div><div class="pw-bar" id="pb4"></div></div><div class="pw-label" id="pwLabel"></div></div></div>
+      <div class="lf"><label>Confirm Password *</label><div class="pw-wrap"><input type="password" id="reg-cpass" placeholder="Re-enter password" oninput="clearFieldErr('cpass')"/><button class="pw-toggle" onclick="togglePw('reg-cpass',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div><div class="field-err" id="err-cpass"><i class="ti ti-alert-circle" style="font-size:12px"></i>Passwords do not match</div></div>
       <div class="auth-err" id="registerErr"><i class="ti ti-alert-circle"></i><span id="registerErrTxt"></span></div>
-      <div class="auth-suc" id="registerSuc">
-        <div style="display:flex;align-items:center;gap:7px;font-weight:700"><i class="ti ti-circle-check"></i>Account created successfully!</div>
-        <div id="registerSucTxt" style="font-size:11px;margin-top:2px"></div>
-      </div>
-      <button class="auth-btn" id="registerBtn" onclick="doRegister()">
-        <i class="ti ti-user-plus"></i>Create My Account<div class="spinner-sm" id="registerSpin"></div>
-      </button>
+      <div class="auth-suc" id="registerSuc"><div style="display:flex;align-items:center;gap:7px;font-weight:700"><i class="ti ti-circle-check"></i>Account created successfully!</div><div id="registerSucTxt" style="font-size:11px;margin-top:2px"></div></div>
+      <button class="auth-btn" id="registerBtn" onclick="doRegister()"><i class="ti ti-user-plus"></i>Create My Account<div class="spinner-sm" id="registerSpin"></div></button>
       <div class="auth-hint">Already have an account? <strong onclick="switchTab('login')">Sign in</strong></div>
     </div>
   </div>
 </div>
 
-<!-- HISTORY DRAWER OVERLAY -->
 <div class="history-overlay" id="historyOverlay" onclick="closeHistoryDrawer()"></div>
-
-<!-- HISTORY DRAWER -->
 <div class="history-drawer" id="historyDrawer">
   <div class="hd-header">
-    <div class="hd-title-wrap">
-      <div class="hd-icon"><i class="ti ti-clock-history"></i></div>
-      <div>
-        <div class="hd-title">Eligibility Check History</div>
-        <div class="hd-subtitle">All AI prediction results this session</div>
-      </div>
-    </div>
+    <div class="hd-title-wrap"><div class="hd-icon"><i class="ti ti-clock-history"></i></div><div><div class="hd-title">Eligibility Check History</div><div class="hd-subtitle">All AI prediction results this session</div></div></div>
     <div class="hd-close" onclick="closeHistoryDrawer()"><i class="ti ti-x"></i></div>
   </div>
-
-  <!-- Stats row -->
   <div class="hd-stats">
-    <div class="hd-stat">
-      <div class="hd-stat-val" id="hd-stat-total" style="color:var(--blue)">0</div>
-      <div class="hd-stat-lbl">Total Checks</div>
-    </div>
-    <div class="hd-stat">
-      <div class="hd-stat-val" id="hd-stat-approved" style="color:var(--green-mid)">0</div>
-      <div class="hd-stat-lbl">Approved</div>
-    </div>
-    <div class="hd-stat">
-      <div class="hd-stat-val" id="hd-stat-rejected" style="color:var(--red-mid)">0</div>
-      <div class="hd-stat-lbl">Rejected</div>
-    </div>
+    <div class="hd-stat"><div class="hd-stat-val" id="hd-stat-total" style="color:var(--blue)">0</div><div class="hd-stat-lbl">Total Checks</div></div>
+    <div class="hd-stat"><div class="hd-stat-val" id="hd-stat-approved" style="color:var(--green-mid)">0</div><div class="hd-stat-lbl">Approved</div></div>
+    <div class="hd-stat"><div class="hd-stat-val" id="hd-stat-rejected" style="color:var(--red-mid)">0</div><div class="hd-stat-lbl">Rejected</div></div>
   </div>
-
-  <!-- Filter bar -->
   <div class="hd-filter-bar">
     <button class="hd-filter-btn active" id="hdf-all" onclick="filterHistory('all')">All</button>
     <button class="hd-filter-btn approved" id="hdf-approved" onclick="filterHistory('approved')"><i class="ti ti-circle-check" style="font-size:11px"></i> Approved</button>
     <button class="hd-filter-btn rejected" id="hdf-rejected" onclick="filterHistory('rejected')"><i class="ti ti-circle-x" style="font-size:11px"></i> Rejected</button>
   </div>
-
-  <!-- History list -->
-  <div class="hd-body" id="hdBody">
-    <div class="hd-no-data">
-      <i class="ti ti-history"></i>
-      <p>No checks yet.<br>Run the AI model to see results here.</p>
-    </div>
-  </div>
-
+  <div class="hd-body" id="hdBody"><div class="hd-no-data"><i class="ti ti-history"></i><p>No checks yet.<br>Run the AI model to see results here.</p></div></div>
   <div class="hd-footer">
-    <button class="hd-clear-btn" onclick="clearHistory()">
-      <i class="ti ti-trash"></i>Clear History
-    </button>
-    <button class="hd-clear-btn" style="flex:2;background:var(--navy);color:#fff;border-color:var(--navy)" onclick="closeHistoryDrawer()">
-      <i class="ti ti-arrow-right"></i>Close
-    </button>
+    <button class="hd-clear-btn" onclick="clearHistory()"><i class="ti ti-trash"></i>Clear History</button>
+    <button class="hd-clear-btn" style="flex:2;background:var(--navy);color:#fff;border-color:var(--navy)" onclick="closeHistoryDrawer()"><i class="ti ti-arrow-right"></i>Close</button>
   </div>
 </div>
 
-<!-- APP -->
 <div id="appWrap">
 <div class="app-inner">
 <nav class="sidebar">
-  <div class="sb-brand">
-    <div class="sb-logo">
-      <div class="sb-logo-icon"><i class="ti ti-building-bank"></i></div>
-      <div><div class="sb-logo-name">NexaBank</div><div class="sb-logo-sub">Customer Portal</div></div>
-    </div>
-  </div>
-  <div class="sb-user">
-    <div class="sb-av" id="sideAvatar">--</div>
-    <div><div class="sb-uname" id="sideUserName">—</div><div class="sb-uid" id="sideUserId">—</div></div>
-  </div>
-  <div class="sb-bal">
-    <div class="sb-bal-lbl">Total Applications</div>
-    <div class="sb-bal-val" id="sbTotalApps">0</div>
-    <div class="sb-bal-sub">Across all loans</div>
-  </div>
+  <div class="sb-brand"><div class="sb-logo"><div class="sb-logo-icon"><i class="ti ti-building-bank"></i></div><div><div class="sb-logo-name">NexaBank</div><div class="sb-logo-sub">Customer Portal</div></div></div></div>
+  <div class="sb-user"><div class="sb-av" id="sideAvatar">--</div><div><div class="sb-uname" id="sideUserName">—</div><div class="sb-uid" id="sideUserId">—</div></div></div>
+  <div class="sb-bal"><div class="sb-bal-lbl">Total Applications</div><div class="sb-bal-val" id="sbTotalApps">0</div><div class="sb-bal-sub">Across all loans</div></div>
   <div class="sb-nav">
     <div class="sb-sec">Banking</div>
     <button class="nav-item active" onclick="showPage('dashboard',this)"><i class="ti ti-layout-dashboard"></i>Dashboard</button>
@@ -628,39 +410,24 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
     <div class="sb-sec">Products</div>
     <button class="nav-item" onclick="showPage('loans',this)"><i class="ti ti-coin"></i>My Loans</button>
     <button class="nav-item" onclick="showPage('apply',this)"><i class="ti ti-file-plus"></i>Apply for Loan</button>
-    <button class="nav-item" onclick="showPage('predict',this)"><i class="ti ti-brain"></i>loan Eligibility Check</button>
+    <button class="nav-item" onclick="showPage('predict',this)"><i class="ti ti-brain"></i>Loan Eligibility Check</button>
     <div class="sb-sec">Account</div>
     <button class="nav-item" onclick="showPage('profile',this)"><i class="ti ti-user-circle"></i>Profile & KYC</button>
     <button class="nav-item" onclick="showPage('settings',this)"><i class="ti ti-settings"></i>Settings</button>
     <button class="nav-item" onclick="showPage('support',this)"><i class="ti ti-help-circle"></i>Help & Support</button>
   </div>
-  <div class="sb-bottom">
-    <button class="nav-item" style="color:rgba(255,255,255,0.35)" onclick="doLogout()"><i class="ti ti-logout"></i>Sign Out</button>
-  </div>
+  <div class="sb-bottom"><button class="nav-item" style="color:rgba(255,255,255,0.35)" onclick="doLogout()"><i class="ti ti-logout"></i>Sign Out</button></div>
 </nav>
-
 <div class="main">
   <header class="topbar">
-    <div class="tb-left">
-      <span class="pg-title" id="pgTitle">Dashboard</span>
-      <span class="breadcrumb" id="pgBread">/ Overview</span>
-    </div>
-    <div class="tb-right">
-      <div class="tb-btn" onclick="showPage('support',null)" title="Help"><i class="ti ti-help-circle"></i></div>
-      <div class="tb-btn" title="Notifications"><i class="ti ti-bell"></i></div>
-      <div class="tb-av" id="topAvatar">--</div>
-    </div>
+    <div class="tb-left"><span class="pg-title" id="pgTitle">Dashboard</span><span class="breadcrumb" id="pgBread">/ Overview</span></div>
+    <div class="tb-right"><div class="tb-btn" onclick="showPage('support',null)" title="Help"><i class="ti ti-help-circle"></i></div><div class="tb-btn" title="Notifications"><i class="ti ti-bell"></i></div><div class="tb-av" id="topAvatar">--</div></div>
   </header>
-
   <div class="content">
 
-  <!-- DASHBOARD -->
   <div class="page active" id="page-dashboard">
     <div style="margin-bottom:18px;display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-size:20px;font-weight:800;letter-spacing:-0.5px" id="dashGreeting">Welcome 👋</div>
-        <div style="font-size:12px;color:var(--muted)" id="dashDate"></div>
-      </div>
+      <div><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px" id="dashGreeting">Welcome 👋</div><div style="font-size:12px;color:var(--muted)" id="dashDate"></div></div>
       <button class="btn btn-primary" onclick="showPage('apply',null)"><i class="ti ti-file-plus"></i>Apply Loan</button>
     </div>
     <div class="stat-row">
@@ -674,17 +441,12 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
       <div class="qa-btn" onclick="showPage('apply',null)"><div class="qa-icon" style="background:var(--amber-bg);color:var(--amber)"><i class="ti ti-file-plus"></i></div><div class="qa-lbl">Apply Loan</div></div>
       <div class="qa-btn" onclick="showPage('predict',null)"><div class="qa-icon" style="background:var(--purple-bg);color:var(--purple)"><i class="ti ti-brain"></i></div><div class="qa-lbl">AI Check</div></div>
     </div>
-    <div class="card">
-      <div class="card-head"><div class="card-title"><i class="ti ti-activity"></i>Recent Loan Applications</div><span class="card-action" onclick="showPage('transactions',null)">View all</span></div>
-      <div id="dashRecentLoans"><div class="no-data"><i class="ti ti-coin"></i>No applications yet</div></div>
-    </div>
+    <div class="card"><div class="card-head"><div class="card-title"><i class="ti ti-activity"></i>Recent Loan Applications</div><span class="card-action" onclick="showPage('transactions',null)">View all</span></div><div id="dashRecentLoans"><div class="no-data"><i class="ti ti-coin"></i>No applications yet</div></div></div>
   </div>
 
-  <!-- MY ACCOUNTS -->
   <div class="page" id="page-accounts">
     <div style="margin-bottom:20px"><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">My Accounts</div></div>
-    <div class="card">
-      <div class="card-head"><div class="card-title"><i class="ti ti-piggy-bank"></i>Savings Account</div><span class="badge green">Active</span></div>
+    <div class="card"><div class="card-head"><div class="card-title"><i class="ti ti-piggy-bank"></i>Savings Account</div><span class="badge green">Active</span></div>
       <div class="g2" style="gap:18px;margin-bottom:16px">
         <div><div style="font-size:10px;color:var(--muted);margin-bottom:2px">Account Number</div><div style="font-size:14px;font-weight:600;font-family:'JetBrains Mono',monospace" id="acc-number">—</div></div>
         <div><div style="font-size:10px;color:var(--muted);margin-bottom:2px">IFSC Code</div><div style="font-size:14px;font-weight:600;font-family:'JetBrains Mono',monospace" id="acc-ifsc">—</div></div>
@@ -694,10 +456,9 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
     </div>
   </div>
 
-  <!-- LOAN HISTORY -->
   <div class="page" id="page-transactions">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-      <div><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">Loan History</div><div style="font-size:12px;color:var(--muted)">All your loan applications and disbursements</div></div>
+      <div><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">Loan History</div><div style="font-size:12px;color:var(--muted)">All your loan applications</div></div>
       <button class="btn btn-outline" onclick="buildLoanHistoryPage()"><i class="ti ti-refresh"></i>Refresh</button>
     </div>
     <div class="stat-row">
@@ -705,13 +466,9 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
       <div class="stat"><div class="stat-val" style="color:var(--green)" id="lh-approved">0</div><div class="stat-lbl">Approved</div></div>
       <div class="stat"><div class="stat-val" style="color:var(--red)" id="lh-rejected">0</div><div class="stat-lbl">Rejected</div></div>
     </div>
-    <div class="card">
-      <div class="card-head"><div class="card-title"><i class="ti ti-coin"></i>Loan Application History</div></div>
-      <div id="loanHistoryList"><div class="no-data"><i class="ti ti-coin"></i>No loan applications yet.</div></div>
-    </div>
+    <div class="card"><div class="card-head"><div class="card-title"><i class="ti ti-coin"></i>Loan Application History</div></div><div id="loanHistoryList"><div class="no-data"><i class="ti ti-coin"></i>No loan applications yet.</div></div></div>
   </div>
 
-  <!-- MY LOANS -->
   <div class="page" id="page-loans">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
       <div><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">My Loans</div></div>
@@ -722,31 +479,18 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
       <div class="stat"><div class="stat-val" style="color:var(--green)" id="loan-approved">0</div><div class="stat-lbl">Approved</div></div>
       <div class="stat"><div class="stat-val" style="color:var(--red)" id="loan-rejected">0</div><div class="stat-lbl">Rejected</div></div>
     </div>
-    <div class="card">
-      <div class="card-head"><div class="card-title"><i class="ti ti-coin"></i>Loan History</div></div>
-      <div id="myLoansListEl"><div class="no-data"><i class="ti ti-coin"></i>No loans yet. <span style="color:var(--blue);cursor:pointer" onclick="showPage('apply',null)">Apply for one →</span></div></div>
-    </div>
+    <div class="card"><div class="card-head"><div class="card-title"><i class="ti ti-coin"></i>Loan History</div></div><div id="myLoansListEl"><div class="no-data"><i class="ti ti-coin"></i>No loans yet. <span style="color:var(--blue);cursor:pointer" onclick="showPage('apply',null)">Apply for one →</span></div></div></div>
   </div>
 
-  <!-- APPLY LOAN PAGE -->
   <div class="page" id="page-apply">
-    <div style="margin-bottom:22px">
-      <div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">Apply for a Loan</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:3px">Fill in your loan details below, then check eligibility on the AI Eligibility page</div>
-    </div>
-    <div class="apply-step-label">
-      <div class="apply-step-num">1</div>
-      <div><div class="apply-step-title">Select Loan Type</div><div class="apply-step-sub">Choose the loan you want to apply for</div></div>
-    </div>
+    <div style="margin-bottom:22px"><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">Apply for a Loan</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Fill in your loan details below</div></div>
+    <div class="apply-step-label"><div class="apply-step-num">1</div><div><div class="apply-step-title">Select Loan Type</div><div class="apply-step-sub">Choose the loan you want to apply for</div></div></div>
     <div class="loan-type-grid">
       <div class="lt-card sel" id="lt-home" onclick="selectLoanType('home','Home Loan',this)"><span class="lt-emoji">🏠</span><div class="lt-name">Home Loan</div><div class="lt-rate">From 8.5% p.a. · Up to ₹1 Cr</div></div>
       <div class="lt-card" id="lt-personal" onclick="selectLoanType('personal','Personal Loan',this)"><span class="lt-emoji">💼</span><div class="lt-name">Personal Loan</div><div class="lt-rate">From 10.5% p.a. · Up to ₹25L</div></div>
       <div class="lt-card" id="lt-vehicle" onclick="selectLoanType('vehicle','Vehicle Loan',this)"><span class="lt-emoji">🚗</span><div class="lt-name">Vehicle Loan</div><div class="lt-rate">From 9.0% p.a. · Up to ₹50L</div></div>
     </div>
-    <div class="apply-step-label">
-      <div class="apply-step-num">2</div>
-      <div><div class="apply-step-title">Applicant & Financial Details</div><div class="apply-step-sub">Enter your financial & employment information</div></div>
-    </div>
+    <div class="apply-step-label"><div class="apply-step-num">2</div><div><div class="apply-step-title">Applicant & Financial Details</div><div class="apply-step-sub">Enter your financial & employment information</div></div></div>
     <div class="card" style="margin-bottom:0">
       <div class="fr">
         <div class="field"><label>Education</label><div class="tr-row"><input type="radio" name="education" id="edu-g" value="Graduate" checked/><label for="edu-g">Graduate</label><input type="radio" name="education" id="edu-ng" value="Not Graduate"/><label for="edu-ng">Not Graduate</label></div></div>
@@ -766,7 +510,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
           <div class="field" style="margin-bottom:0"><label>Rate (%)</label><input type="number" id="calcRate" placeholder="8.5" step="0.1" oninput="calcEMI()"/></div>
           <div class="field" style="margin-bottom:0"><label>Tenure (Yrs)</label><input type="number" id="calcTenure" placeholder="15" oninput="calcEMI()"/></div>
         </div>
-        <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Uses Loan Amount from the form above</div>
         <div id="calcRes" style="display:none;background:var(--blue-lt);border-radius:6px;padding:10px;margin-top:6px">
           <div style="font-size:9px;color:var(--muted);margin-bottom:1px">Monthly EMI</div>
           <div id="calcEMIVal" style="font-size:20px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--blue)"></div>
@@ -781,76 +524,41 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
       <div class="pcta-left">
         <div class="pcta-tag"><i class="ti ti-brain" style="font-size:11px"></i>AI-POWERED</div>
         <div class="pcta-title">Check Your Loan Eligibility Instantly</div>
-        <div class="pcta-sub">Our ML model analyses your CIBIL score, income, employment & more to give you a real-time approval decision.</div>
+        <div class="pcta-sub">Our ML model analyses your CIBIL score, income, employment & more.</div>
         <div class="pcta-checks">
           <div class="pcta-check"><i class="ti ti-check" style="color:#7ADCA2;font-size:13px"></i>CIBIL Score Analysis</div>
           <div class="pcta-check"><i class="ti ti-check" style="color:#7ADCA2;font-size:13px"></i>Debt-to-Income Ratio</div>
-          <div class="pcta-check"><i class="ti ti-check" style="color:#7ADCA2;font-size:13px"></i>ML Confidence Score</div>
           <div class="pcta-check"><i class="ti ti-check" style="color:#7ADCA2;font-size:13px"></i>Instant Decision</div>
         </div>
       </div>
       <div class="pcta-right">
-        <button class="goto-predict-btn" onclick="gotoPredict()">
-          <i class="ti ti-brain"></i>Get Instant Decision<i class="ti ti-arrow-right" style="font-size:16px;opacity:0.7"></i>
-        </button>
+        <button class="goto-predict-btn" onclick="gotoPredict()"><i class="ti ti-brain"></i>Get Instant Decision<i class="ti ti-arrow-right" style="font-size:16px;opacity:0.7"></i></button>
         <div style="font-size:10.5px;color:rgba(255,255,255,0.45);text-align:center;margin-top:8px">Your form data carries over automatically</div>
       </div>
     </div>
   </div>
 
-  <!-- AI ELIGIBILITY / PREDICTION PAGE -->
   <div class="page" id="page-predict">
-
-    <!-- Hero -->
     <div class="predict-hero">
       <div class="ph-top">
         <div>
           <div class="ph-icon-wrap"><i class="ti ti-brain" style="font-size:28px;color:#C4B5FD"></i></div>
-          <div class="ph-title">loan Eligibility Check</div>
-          <div class="ph-sub">Our machine learning model instantly analyses your credit profile and gives you a real-time loan approval decision — no waiting, no paperwork.</div>
+          <div class="ph-title">Loan Eligibility Check</div>
+          <div class="ph-sub">Our machine learning model instantly analyses your credit profile and gives you a real-time loan approval decision.</div>
         </div>
-        <!-- Topbar buttons: History + Back -->
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;position:relative;z-index:2">
-          <!-- HISTORY BUTTON -->
-          <button class="predict-history-btn" id="historyToggleBtn" onclick="openHistoryDrawer()">
-            <i class="ti ti-clock-history"></i>
-            History
-            <div class="hist-count-badge hidden" id="histCountBadge">0</div>
-          </button>
-          <!-- Back button -->
+          <button class="predict-history-btn" id="historyToggleBtn" onclick="openHistoryDrawer()"><i class="ti ti-clock-history"></i>History<div class="hist-count-badge hidden" id="histCountBadge">0</div></button>
           <button class="ph-back-btn" onclick="showPage('apply',null)"><i class="ti ti-arrow-left"></i>Back to Apply</button>
         </div>
       </div>
     </div>
-
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
-
-      <!-- LEFT: Form inputs -->
       <div>
         <div class="predict-form-card">
-          <div class="pf-section-head">
-            <div class="pf-section-num">1</div>
-            <div class="pf-section-title">Credit Profile</div>
-          </div>
-
+          <div class="pf-section-head"><div class="pf-section-num">1</div><div class="pf-section-title">Credit Profile</div></div>
           <div id="savedDataInfo" style="margin-bottom:14px"></div>
-
-          <div class="field"><label>Education Level</label>
-            <div class="tr-row">
-              <input type="radio" name="p_education" id="p_edu-g" value="Graduate" checked/>
-              <label for="p_edu-g">Graduate</label>
-              <input type="radio" name="p_education" id="p_edu-ng" value="Not Graduate"/>
-              <label for="p_edu-ng">Not Graduate</label>
-            </div>
-          </div>
-          <div class="field"><label>Employment Type</label>
-            <div class="tr-row">
-              <input type="radio" name="p_self_employed" id="p_se-no" value="No" checked/>
-              <label for="p_se-no">Salaried</label>
-              <input type="radio" name="p_self_employed" id="p_se-yes" value="Yes"/>
-              <label for="p_se-yes">Self-Employed</label>
-            </div>
-          </div>
+          <div class="field"><label>Education Level</label><div class="tr-row"><input type="radio" name="p_education" id="p_edu-g" value="Graduate" checked/><label for="p_edu-g">Graduate</label><input type="radio" name="p_education" id="p_edu-ng" value="Not Graduate"/><label for="p_edu-ng">Not Graduate</label></div></div>
+          <div class="field"><label>Employment Type</label><div class="tr-row"><input type="radio" name="p_self_employed" id="p_se-no" value="No" checked/><label for="p_se-no">Salaried</label><input type="radio" name="p_self_employed" id="p_se-yes" value="Yes"/><label for="p_se-yes">Self-Employed</label></div></div>
           <div class="fr">
             <div class="field"><label>Annual Income (₹)</label><input type="number" id="p_income" placeholder="e.g. 800000"/></div>
             <div class="field"><label>Loan Amount (₹)</label><input type="number" id="p_loan_amount" placeholder="e.g. 2500000"/></div>
@@ -859,18 +567,10 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
             <div class="field"><label>Loan Term (Years)</label><input type="number" id="p_loan_term" placeholder="e.g. 15"/></div>
             <div class="field"><label>CIBIL Score</label><input type="number" id="p_cibil" placeholder="300–900" min="300" max="900"/></div>
           </div>
-
           <div class="err-box" id="pErrBox"><i class="ti ti-alert-circle"></i><span id="pErrTxt"></span></div>
-
-          <button class="ai-main-btn" id="aiMainBtn" onclick="runAI()">
-            <i class="ti ti-sparkles" id="aiMainIcon" style="font-size:18px"></i>
-            <span id="aiMainTxt">Run AI Model — Get Instant Decision</span>
-            <div class="btn-spinner" id="aiMainSpin"></div>
-          </button>
+          <button class="ai-main-btn" id="aiMainBtn" onclick="runAI()"><i class="ti ti-sparkles" id="aiMainIcon" style="font-size:18px"></i><span id="aiMainTxt">Run AI Model — Get Instant Decision</span><div class="btn-spinner" id="aiMainSpin"></div></button>
           <div id="aiStatusLabel" style="font-size:11.5px;color:var(--muted);margin-top:8px;font-weight:500;text-align:center;min-height:18px"></div>
         </div>
-
-        <!-- CIBIL Guide -->
         <div class="card" style="padding:16px">
           <div class="card-title" style="margin-bottom:12px"><i class="ti ti-chart-bar"></i>CIBIL Score Guide</div>
           <div style="display:flex;flex-direction:column;gap:7px">
@@ -881,94 +581,55 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
           </div>
         </div>
       </div>
-
-      <!-- RIGHT: Result area -->
       <div>
         <div id="predictResultPlaceholder" style="background:var(--surface);border:2px dashed var(--border);border-radius:var(--r);padding:48px 24px;text-align:center">
-          <div style="width:72px;height:72px;background:var(--purple-bg);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
-            <i class="ti ti-chart-dots" style="font-size:36px;color:rgba(61,26,140,0.35)"></i>
-          </div>
+          <div style="width:72px;height:72px;background:var(--purple-bg);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><i class="ti ti-chart-dots" style="font-size:36px;color:rgba(61,26,140,0.35)"></i></div>
           <div style="font-size:15px;font-weight:700;color:var(--hint);margin-bottom:6px">No prediction yet</div>
           <div style="font-size:12.5px;color:var(--hint);line-height:1.7">Fill your credit details and click<br><strong style="color:var(--purple)">"Run AI Model"</strong> to get an instant decision</div>
         </div>
-
         <div class="ai-result-card" id="aiResultCard" style="display:none">
-          <div class="arc-header">
-            <div class="arc-icon-wrap" id="arcIconWrap"><i id="arcIcon" style="font-size:24px"></i></div>
-            <div>
-              <div class="arc-verdict" id="arcVerdict">—</div>
-              <div class="arc-reason" id="arcReason">—</div>
-            </div>
-          </div>
+          <div class="arc-header"><div class="arc-icon-wrap" id="arcIconWrap"><i id="arcIcon" style="font-size:24px"></i></div><div><div class="arc-verdict" id="arcVerdict">—</div><div class="arc-reason" id="arcReason">—</div></div></div>
           <div class="arc-factors" id="arcFactors"></div>
           <div class="arc-metrics" id="arcMetrics"></div>
-          <div class="arc-confidence">
-            <div class="arc-conf-row">
-              <span class="arc-conf-label">Model Confidence</span>
-              <span class="arc-conf-pct" id="arcConfPct">—</span>
-            </div>
-            <div class="arc-bar-track"><div class="arc-bar-fill" id="arcBarFill"></div></div>
-          </div>
+          <div class="arc-confidence"><div class="arc-conf-row"><span class="arc-conf-label">Model Confidence</span><span class="arc-conf-pct" id="arcConfPct">—</span></div><div class="arc-bar-track"><div class="arc-bar-fill" id="arcBarFill"></div></div></div>
         </div>
-
         <div id="applyNowWrap" style="display:none;margin-top:14px">
-          <button class="btn btn-primary btn-full btn-lg" onclick="finaliseApplication()">
-            <i class="ti ti-file-check"></i>Submit Application to Bank
-          </button>
+          <button class="btn btn-primary btn-full btn-lg" onclick="finaliseApplication()"><i class="ti ti-file-check"></i>Submit Application to Bank</button>
           <div style="font-size:11px;color:var(--hint);text-align:center;margin-top:7px">Your application will be saved and sent for processing</div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- PROFILE -->
   <div class="page" id="page-profile">
     <div style="margin-bottom:16px"><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">Profile & KYC</div></div>
     <div class="profile-hero">
       <div class="ph-avatar" id="profileAvatar">--</div>
-      <div>
-        <div class="ph-name" id="profileName">—</div>
-        <div style="font-size:12px;opacity:0.55">NexaBank Customer</div>
-        <div class="ph-id" id="profileId">—</div>
-        <div class="ph-kyc"><i class="ti ti-shield-check" style="font-size:12px"></i>KYC Pending</div>
-      </div>
+      <div><div class="ph-name" id="profileName">—</div><div style="font-size:12px;opacity:0.55">NexaBank Customer</div><div class="ph-id" id="profileId">—</div><div class="ph-kyc"><i class="ti ti-shield-check" style="font-size:12px"></i>KYC Pending</div></div>
     </div>
     <div class="g2">
-      <div>
-        <div class="card">
-          <div class="card-title" style="margin-bottom:16px"><i class="ti ti-user-circle"></i>Personal Information</div>
-          <div class="fr">
-            <div class="field"><label>First Name</label><input type="text" id="pf-fname"/></div>
-            <div class="field"><label>Last Name</label><input type="text" id="pf-lname"/></div>
-          </div>
-          <div class="field"><label>Email</label><input type="email" id="pf-email"/></div>
-          <div class="field"><label>Mobile</label><input type="tel" id="pf-mobile"/></div>
-          <div class="field"><label>Date of Birth</label><input type="date" id="pf-dob"/></div>
-          <button class="btn btn-primary"><i class="ti ti-device-floppy"></i>Save Changes</button>
-        </div>
-      </div>
-      <div>
-        <div class="card">
-          <div class="card-title" style="margin-bottom:14px"><i class="ti ti-id-badge"></i>KYC Documents</div>
-          <div class="kyc-item pending"><div style="display:flex;align-items:center;gap:9px"><i class="ti ti-id-badge" style="color:var(--amber);font-size:19px"></i><div><div style="font-size:12.5px;font-weight:600">PAN Card</div><div style="font-size:11px;color:var(--muted)">Not submitted</div></div></div><button class="btn btn-outline" style="height:28px;padding:0 9px;font-size:10.5px"><i class="ti ti-upload"></i>Upload</button></div>
-          <div class="kyc-item pending"><div style="display:flex;align-items:center;gap:9px"><i class="ti ti-fingerprint" style="color:var(--amber);font-size:19px"></i><div><div style="font-size:12.5px;font-weight:600">Aadhaar Card</div><div style="font-size:11px;color:var(--muted)">Not submitted</div></div></div><button class="btn btn-outline" style="height:28px;padding:0 9px;font-size:10.5px"><i class="ti ti-upload"></i>Upload</button></div>
-        </div>
-      </div>
+      <div><div class="card"><div class="card-title" style="margin-bottom:16px"><i class="ti ti-user-circle"></i>Personal Information</div>
+        <div class="fr"><div class="field"><label>First Name</label><input type="text" id="pf-fname"/></div><div class="field"><label>Last Name</label><input type="text" id="pf-lname"/></div></div>
+        <div class="field"><label>Email</label><input type="email" id="pf-email"/></div>
+        <div class="field"><label>Mobile</label><input type="tel" id="pf-mobile"/></div>
+        <div class="field"><label>Date of Birth</label><input type="date" id="pf-dob"/></div>
+        <button class="btn btn-primary"><i class="ti ti-device-floppy"></i>Save Changes</button>
+      </div></div>
+      <div><div class="card"><div class="card-title" style="margin-bottom:14px"><i class="ti ti-id-badge"></i>KYC Documents</div>
+        <div class="kyc-item pending"><div style="display:flex;align-items:center;gap:9px"><i class="ti ti-id-badge" style="color:var(--amber);font-size:19px"></i><div><div style="font-size:12.5px;font-weight:600">PAN Card</div><div style="font-size:11px;color:var(--muted)">Not submitted</div></div></div><button class="btn btn-outline" style="height:28px;padding:0 9px;font-size:10.5px"><i class="ti ti-upload"></i>Upload</button></div>
+        <div class="kyc-item pending"><div style="display:flex;align-items:center;gap:9px"><i class="ti ti-fingerprint" style="color:var(--amber);font-size:19px"></i><div><div style="font-size:12.5px;font-weight:600">Aadhaar Card</div><div style="font-size:11px;color:var(--muted)">Not submitted</div></div></div><button class="btn btn-outline" style="height:28px;padding:0 9px;font-size:10.5px"><i class="ti ti-upload"></i>Upload</button></div>
+      </div></div>
     </div>
   </div>
 
-  <!-- SETTINGS -->
   <div class="page" id="page-settings">
     <div style="margin-bottom:20px"><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">Settings</div></div>
-    <div class="card">
-      <div class="card-title" style="margin-bottom:15px"><i class="ti ti-bell"></i>Notifications</div>
+    <div class="card"><div class="card-title" style="margin-bottom:15px"><i class="ti ti-bell"></i>Notifications</div>
       <div class="settings-row"><div><div class="sr-lbl">Transaction Alerts</div><div class="sr-sub">SMS & email on every debit/credit</div></div><label class="tog"><input type="checkbox" checked/><span class="tog-track"></span><span class="tog-thumb"></span></label></div>
       <div class="settings-row"><div><div class="sr-lbl">EMI Reminders</div><div class="sr-sub">3 days before due date</div></div><label class="tog"><input type="checkbox" checked/><span class="tog-track"></span><span class="tog-thumb"></span></label></div>
     </div>
   </div>
 
-  <!-- SUPPORT -->
   <div class="page" id="page-support">
     <div style="margin-bottom:20px"><div style="font-size:20px;font-weight:800;letter-spacing:-0.5px">Help & Support</div></div>
     <div class="g3" style="margin-bottom:16px">
@@ -976,8 +637,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
       <div class="card" style="margin-bottom:0;text-align:center"><div style="width:46px;height:46px;border-radius:12px;background:var(--blue-lt);color:var(--blue);font-size:21px;display:flex;align-items:center;justify-content:center;margin:0 auto 9px"><i class="ti ti-message-circle"></i></div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Live Chat</div><div style="font-size:12px;color:var(--muted)">Chat with an agent</div><div style="font-size:10.5px;color:var(--green)">● Online now</div></div>
       <div class="card" style="margin-bottom:0;text-align:center"><div style="width:46px;height:46px;border-radius:12px;background:var(--amber-bg);color:var(--amber);font-size:21px;display:flex;align-items:center;justify-content:center;margin:0 auto 9px"><i class="ti ti-mail"></i></div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Email</div><div style="font-size:12px;color:var(--muted)">support@nexabank.in</div></div>
     </div>
-    <div class="card">
-      <div class="card-title" style="margin-bottom:14px"><i class="ti ti-help-circle"></i>FAQ</div>
+    <div class="card"><div class="card-title" style="margin-bottom:14px"><i class="ti ti-help-circle"></i>FAQ</div>
       <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How do I reset my password?<i class="ti ti-chevron-down faq-chev"></i></div><div class="faq-a">Contact support at 1800-120-NEXA and they will guide you through the reset process.</div></div>
       <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How long does a loan application take?<i class="ti ti-chevron-down faq-chev"></i></div><div class="faq-a">Personal: 24–48 hrs. Home: 5–7 working days. AI-assessed applications get instant results.</div></div>
     </div>
@@ -988,16 +648,22 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 </div>
 </div>
 
-
-
 <script>
-const API = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+// ─── SESSION HELPERS ──────────────────────────────────────────────────────────
+const SESSION_KEY = 'nexabank_session';
+function getSession(){try{return JSON.parse(sessionStorage.getItem(SESSION_KEY))}catch{return null}}
+function saveSession(u){sessionStorage.setItem(SESSION_KEY,JSON.stringify(u))}
+function clearSession(){sessionStorage.removeItem(SESSION_KEY)}
+
+// ─── API CONFIG ───────────────────────────────────────────────────────────────
+const API = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost')
   ? 'http://127.0.0.1:7860'
   : '';
 
 console.log('🔗 API URL:', API || '(relative/same origin)');
 console.log('🌐 Hostname:', window.location.hostname);
 
+// ─── API HELPER WITH CLEAR ERROR MESSAGES ─────────────────────────────────────
 async function api(method, path, body = null) {
   const url = API + path;
   console.log('📡 Calling:', method, url, body || '');
@@ -1008,18 +674,21 @@ async function api(method, path, body = null) {
     res = await fetch(url, opts);
   } catch (err) {
     console.error('❌ Fetch failed:', err.message);
-    throw new Error('❌ Cannot reach server at ' + url + ' — Is backend running? Error: ' + err.message);
+    if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+      throw new Error('⚠️ Cannot connect to server. Check if backend is running. URL: ' + url);
+    }
+    throw new Error('⚠️ Connection error: ' + err.message);
   }
   let data;
   try {
     data = await res.json();
   } catch {
-    console.error('❌ Invalid JSON response, status:', res.status);
-    throw new Error('❌ Server returned invalid response. Status: ' + res.status);
+    console.error('❌ Invalid JSON, status:', res.status);
+    throw new Error('⚠️ Server returned invalid response. Status: ' + res.status);
   }
   if (!res.ok) {
     console.error('❌ API error:', res.status, data);
-    throw new Error(data.detail || '❌ Server error: ' + res.status);
+    throw new Error(data.detail || '⚠️ Server error: ' + res.status);
   }
   console.log('✅ Response:', data);
   return data;
@@ -1054,10 +723,7 @@ async function doLogin(){
   const password=document.getElementById('loginPass').value;
   const errEl=document.getElementById('loginErr');
   errEl.classList.remove('show');
-  if(!identifier||!password){
-    document.getElementById('loginErrTxt').textContent='Please enter your ID and password.';
-    errEl.classList.add('show');return;
-  }
+  if(!identifier||!password){document.getElementById('loginErrTxt').textContent='Please enter your ID and password.';errEl.classList.add('show');return;}
   const btn=document.getElementById('loginBtn');
   const spin=document.getElementById('loginSpin');
   btn.disabled=true;spin.style.display='inline-block';
@@ -1095,16 +761,12 @@ async function doRegister(){
   const spin=document.getElementById('registerSpin');
   btn.disabled=true;spin.style.display='inline-block';
   try{
-    const data=await api('POST','/auth/register',{
-      first_name:fname,last_name:lname,email,mobile,dob,
-      gender:gender||'Prefer not to say',password:pass
-    });
+    const data=await api('POST','/auth/register',{first_name:fname,last_name:lname,email,mobile,dob,gender:gender||'Prefer not to say',password:pass});
     document.getElementById('registerSucTxt').textContent='Your Customer ID: '+data.customer_id+' — You can now sign in.';
     document.getElementById('registerSuc').classList.add('show');
     btn.innerHTML='<i class="ti ti-login"></i>Go to Sign In';
     setTimeout(()=>{
-      ['reg-fname','reg-lname','reg-email','reg-mobile','reg-dob','reg-pass','reg-cpass']
-        .forEach(id=>{document.getElementById(id).value=''});
+      ['reg-fname','reg-lname','reg-email','reg-mobile','reg-dob','reg-pass','reg-cpass'].forEach(id=>{document.getElementById(id).value=''});
       document.getElementById('reg-gender').value='';
       document.getElementById('pwStrength').style.display='none';
       document.getElementById('registerSuc').classList.remove('show');
@@ -1152,8 +814,7 @@ function loadUserIntoApp(user){
 }
 
 function doLogout(){
-  clearSession();window._currentUser=null;
-  _predictionHistory=[];
+  clearSession();window._currentUser=null;_predictionHistory=[];
   document.getElementById('authScreen').style.display='flex';
   document.getElementById('appWrap').style.display='none';
   document.getElementById('loginId').value='';
@@ -1172,25 +833,14 @@ async function refreshDashboard(){
     document.getElementById('sbTotalApps').textContent=stats.total||0;
     const{loans}=await api('GET','/loans/'+user.customer_id);
     renderRecentLoans(loans.slice(0,4));
-  }catch{}
+  }catch(e){console.warn('Dashboard refresh failed:',e.message)}
 }
 
 function renderRecentLoans(loans){
   const el=document.getElementById('dashRecentLoans');
   if(!loans.length){el.innerHTML='<div class="no-data"><i class="ti ti-coin"></i>No applications yet</div>';return}
   const icons={home:'🏠',personal:'💼',vehicle:'🚗'};
-  el.innerHTML=loans.map(l=>`
-    <div class="lh-item">
-      <div class="lh-icon" style="background:var(--blue-lt)">${icons[l.loan_type]||'💰'}</div>
-      <div class="lh-meta">
-        <div class="lh-name">${l.loan_type_name} Application</div>
-        <div class="lh-date">${new Date(l.created_at).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})} · ${l.reference}</div>
-      </div>
-      <div class="lh-right">
-        <div class="lh-amt" style="color:${l.status==='approved'?'var(--green)':'var(--red)'}">₹${Number(l.amount).toLocaleString('en-IN')}</div>
-        <span class="badge ${l.status==='approved'?'green':'red'}">${l.status}</span>
-      </div>
-    </div>`).join('');
+  el.innerHTML=loans.map(l=>`<div class="lh-item"><div class="lh-icon" style="background:var(--blue-lt)">${icons[l.loan_type]||'💰'}</div><div class="lh-meta"><div class="lh-name">${l.loan_type_name} Application</div><div class="lh-date">${new Date(l.created_at).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})} · ${l.reference}</div></div><div class="lh-right"><div class="lh-amt" style="color:${l.status==='approved'?'var(--green)':'var(--red)'}">₹${Number(l.amount).toLocaleString('en-IN')}</div><span class="badge ${l.status==='approved'?'green':'red'}">${l.status}</span></div></div>`).join('');
 }
 
 async function buildLoanHistoryPage(){
@@ -1205,39 +855,25 @@ async function buildLoanHistoryPage(){
     const icons={home:'🏠',personal:'💼',vehicle:'🚗'};
     const typeBg={home:'var(--blue-lt)',personal:'var(--purple-bg)',vehicle:'var(--green-bg)'};
     if(!loans.length){
-      const empty='<div class="no-data"><i class="ti ti-coin"></i>No loan applications yet.<br><span style="font-size:12px;margin-top:6px;display:inline-block;color:var(--blue);cursor:pointer" onclick="showPage(\'apply\',null)">Apply for a loan →</span></div>';
+      const empty='<div class="no-data"><i class="ti ti-coin"></i>No loan applications yet.</div>';
       document.getElementById('loanHistoryList').innerHTML=empty;
       document.getElementById('myLoansListEl').innerHTML=empty;return;
     }
     const html=loans.map(l=>{
-      const badge=l.status==='approved'
-        ?'<span class="badge green"><i class="ti ti-circle-check" style="font-size:10px"></i>Approved</span>'
-        :'<span class="badge red"><i class="ti ti-circle-x" style="font-size:10px"></i>Rejected</span>';
-      return`<div class="lh-item">
-        <div class="lh-icon" style="background:${typeBg[l.loan_type]||'var(--blue-lt)'}">${icons[l.loan_type]||'💰'}</div>
-        <div class="lh-meta">
-          <div class="lh-name">${l.loan_type_name} Application</div>
-          <div class="lh-date">${new Date(l.created_at).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})} · Ref: ${l.reference} · CIBIL ${l.cibil_score||'—'}</div>
-        </div>
-        <div class="lh-right">
-          <div class="lh-amt" style="color:${l.status==='approved'?'var(--green)':'var(--red)'}">₹${Number(l.amount).toLocaleString('en-IN')}</div>
-          ${badge}
-        </div>
-      </div>`;
+      const badge=l.status==='approved'?'<span class="badge green"><i class="ti ti-circle-check" style="font-size:10px"></i>Approved</span>':'<span class="badge red"><i class="ti ti-circle-x" style="font-size:10px"></i>Rejected</span>';
+      return`<div class="lh-item"><div class="lh-icon" style="background:${typeBg[l.loan_type]||'var(--blue-lt)'}">${icons[l.loan_type]||'💰'}</div><div class="lh-meta"><div class="lh-name">${l.loan_type_name} Application</div><div class="lh-date">${new Date(l.created_at).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})} · Ref: ${l.reference} · CIBIL ${l.cibil_score||'—'}</div></div><div class="lh-right"><div class="lh-amt" style="color:${l.status==='approved'?'var(--green)':'var(--red)'}">₹${Number(l.amount).toLocaleString('en-IN')}</div>${badge}</div></div>`;
     }).join('');
     document.getElementById('loanHistoryList').innerHTML=html;
     document.getElementById('myLoansListEl').innerHTML=html;
-  }catch{}
+  }catch(e){console.warn('Loan history failed:',e.message)}
 }
 
-// ─── Loan type selector ───────────────────────────────────────────────────────
 let _selectedLoanType={type:'home',name:'Home Loan'};
 function selectLoanType(type,name,el){
   document.querySelectorAll('.lt-card').forEach(c=>c.classList.remove('sel'));
   el.classList.add('sel');_selectedLoanType={type,name};
 }
 
-// ─── Sync Apply form → Predict form ──────────────────────────────────────────
 function syncToPredict(){
   const income=document.getElementById('income_annum').value;
   const loanAmt=document.getElementById('loan_amount').value;
@@ -1253,10 +889,8 @@ function gotoPredict(){
   syncToPredict();
   const edu=document.querySelector('input[name="education"]:checked').value;
   const emp=document.querySelector('input[name="self_employed"]:checked').value;
-  if(edu==='Graduate'){document.getElementById('p_edu-g').checked=true}
-  else{document.getElementById('p_edu-ng').checked=true}
-  if(emp==='No'){document.getElementById('p_se-no').checked=true}
-  else{document.getElementById('p_se-yes').checked=true}
+  if(edu==='Graduate'){document.getElementById('p_edu-g').checked=true}else{document.getElementById('p_edu-ng').checked=true}
+  if(emp==='No'){document.getElementById('p_se-no').checked=true}else{document.getElementById('p_se-yes').checked=true}
   const income=document.getElementById('p_income').value;
   const loanAmt=document.getElementById('p_loan_amount').value;
   const term=document.getElementById('p_loan_term').value;
@@ -1270,16 +904,11 @@ function gotoPredict(){
     if(cibil)chips.push(`<div class="sdc"><i class="ti ti-chart-bar"></i>CIBIL: ${cibil}</div>`);
     infoEl.innerHTML=`<div style="font-size:11px;color:var(--green);font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:5px"><i class="ti ti-circle-check" style="font-size:13px"></i>Data carried over from Apply form</div><div class="saved-data-chips">${chips.join('')}</div>`;
   }else{
-    infoEl.innerHTML=`<div class="no-saved-data"><i class="ti ti-info-circle"></i>No data from Apply form found — please fill the fields below</div>`;
+    infoEl.innerHTML=`<div class="no-saved-data"><i class="ti ti-info-circle"></i>No data from Apply form — please fill the fields below</div>`;
   }
   showPage('predict',null);
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n=>{
-    if(n.textContent.includes('AI Eligibility'))n.classList.add('active');
-  });
 }
 
-// ─── AI Button state ──────────────────────────────────────────────────────────
 function setAIBtnState(state){
   const btn=document.getElementById('aiMainBtn');
   const icon=document.getElementById('aiMainIcon');
@@ -1288,50 +917,21 @@ function setAIBtnState(state){
   const lbl=document.getElementById('aiStatusLabel');
   btn.className='ai-main-btn';
   icon.style.display='';spin.style.display='none';btn.disabled=false;
-  if(state==='idle'){
-    icon.className='ti ti-sparkles';icon.style.fontSize='18px';
-    txt.textContent='Run AI Model — Get Instant Decision';
-    lbl.textContent='';lbl.style.color='var(--muted)';
-  }else if(state==='loading'){
-    btn.classList.add('loading');btn.disabled=true;
-    icon.style.display='none';spin.style.display='inline-block';
-    txt.textContent='Analysing your credit profile…';
-    lbl.textContent='Running ML model — please wait…';lbl.style.color='var(--purple)';
-  }else if(state==='approved'){
-    btn.classList.add('approved');
-    icon.className='ti ti-circle-check';icon.style.fontSize='20px';
-    txt.textContent='Approved — Eligible for Loan';
-    lbl.textContent='✓ Your profile meets lending criteria';lbl.style.color='var(--green-mid)';
-    lbl.style.fontWeight='700';
-  }else if(state==='rejected'){
-    btn.classList.add('rejected');
-    icon.className='ti ti-circle-x';icon.style.fontSize='20px';
-    txt.textContent='Declined — Not Currently Eligible';
-    lbl.textContent='✗ Adjust inputs and try again';lbl.style.color='var(--red-mid)';
-    lbl.style.fontWeight='600';
-  }
+  if(state==='idle'){icon.className='ti ti-sparkles';icon.style.fontSize='18px';txt.textContent='Run AI Model — Get Instant Decision';lbl.textContent='';lbl.style.color='var(--muted)';}
+  else if(state==='loading'){btn.classList.add('loading');btn.disabled=true;icon.style.display='none';spin.style.display='inline-block';txt.textContent='Analysing your credit profile…';lbl.textContent='Running ML model — please wait…';lbl.style.color='var(--purple)';}
+  else if(state==='approved'){btn.classList.add('approved');icon.className='ti ti-circle-check';icon.style.fontSize='20px';txt.textContent='Approved — Eligible for Loan';lbl.textContent='✓ Your profile meets lending criteria';lbl.style.color='var(--green-mid)';lbl.style.fontWeight='700';}
+  else if(state==='rejected'){btn.classList.add('rejected');icon.className='ti ti-circle-x';icon.style.fontSize='20px';txt.textContent='Declined — Not Currently Eligible';lbl.textContent='✗ Adjust inputs and try again';lbl.style.color='var(--red-mid)';lbl.style.fontWeight='600';}
 }
 
-// ─── PREDICTION HISTORY (session memory) ─────────────────────────────────────
-let _predictionHistory = [];
-let _historyFilter = 'all';
+let _predictionHistory=[];
+let _historyFilter='all';
 
-function addToHistory(entry){
-  _predictionHistory.unshift(entry); // newest first
-  updateHistoryBadge();
-  renderHistoryDrawer();
-}
+function addToHistory(entry){_predictionHistory.unshift(entry);updateHistoryBadge();renderHistoryDrawer();}
 
 function updateHistoryBadge(){
   const badge=document.getElementById('histCountBadge');
   const count=_predictionHistory.length;
-  if(count>0){
-    badge.textContent=count>99?'99+':count;
-    badge.classList.remove('hidden');
-  }else{
-    badge.classList.add('hidden');
-  }
-  // Update stats
+  if(count>0){badge.textContent=count>99?'99+':count;badge.classList.remove('hidden');}else{badge.classList.add('hidden');}
   const approved=_predictionHistory.filter(h=>h.approved).length;
   const rejected=_predictionHistory.filter(h=>!h.approved).length;
   document.getElementById('hd-stat-total').textContent=count;
@@ -1349,130 +949,65 @@ function filterHistory(filter){
 function renderHistoryDrawer(){
   const body=document.getElementById('hdBody');
   let items=_predictionHistory;
-  if(_historyFilter==='approved') items=items.filter(h=>h.approved);
-  if(_historyFilter==='rejected') items=items.filter(h=>!h.approved);
-
+  if(_historyFilter==='approved')items=items.filter(h=>h.approved);
+  if(_historyFilter==='rejected')items=items.filter(h=>!h.approved);
   if(!items.length){
-    const emptyMsg=_historyFilter==='all'
-      ? 'No checks yet.<br>Run the AI model to see results here.'
-      : `No ${_historyFilter} results found.`;
-    body.innerHTML=`<div class="hd-no-data"><i class="ti ti-history"></i><p>${emptyMsg}</p></div>`;
-    return;
+    const emptyMsg=_historyFilter==='all'?'No checks yet.<br>Run the AI model to see results here.':`No ${_historyFilter} results found.`;
+    body.innerHTML=`<div class="hd-no-data"><i class="ti ti-history"></i><p>${emptyMsg}</p></div>`;return;
   }
-
-  body.innerHTML=items.map((h,i)=>{
+  body.innerHTML=items.map((h)=>{
     const status=h.approved?'approved':'rejected';
     const icon=h.approved?'ti-circle-check':'ti-circle-x';
     const verdict=h.approved?'Loan Approved':'Loan Eligibility Declined';
     const timeStr=new Date(h.timestamp).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
     const dateStr=new Date(h.timestamp).toLocaleDateString('en-IN',{day:'2-digit',month:'short'});
     const ratio=((h.loanAmt/h.income)*100).toFixed(1);
-    return `<div class="hd-item">
-      <div class="hd-item-icon ${status}"><i class="ti ${icon}"></i></div>
-      <div class="hd-item-body">
-        <div class="hd-item-top">
-          <span class="hd-item-verdict ${status}">${verdict}</span>
-          <span class="hd-item-time">${dateStr} · ${timeStr}</span>
-        </div>
-        <div class="hd-item-details">
-          <span class="hd-chip"><i class="ti ti-chart-bar"></i>CIBIL ${h.cibil}</span>
-          <span class="hd-chip"><i class="ti ti-currency-rupee"></i>₹${Number(h.loanAmt).toLocaleString('en-IN')}</span>
-          <span class="hd-chip"><i class="ti ti-calendar"></i>${h.term}y</span>
-          <span class="hd-chip"><i class="ti ti-percentage"></i>${ratio}% ratio</span>
-          <span class="hd-chip">${h.edu==='Graduate'?'🎓':'📚'} ${h.edu}</span>
-          <span class="hd-chip">${h.emp==='No'?'💼 Salaried':'🏢 Self-Employed'}</span>
-        </div>
-        <div class="hd-item-conf">
-          <div class="hd-conf-track"><div class="hd-conf-fill ${status}" style="width:${h.confidence}%"></div></div>
-          <span class="hd-conf-pct ${status}">${h.confidence}%</span>
-        </div>
-      </div>
-    </div>`;
+    return`<div class="hd-item"><div class="hd-item-icon ${status}"><i class="ti ${icon}"></i></div><div class="hd-item-body"><div class="hd-item-top"><span class="hd-item-verdict ${status}">${verdict}</span><span class="hd-item-time">${dateStr} · ${timeStr}</span></div><div class="hd-item-details"><span class="hd-chip"><i class="ti ti-chart-bar"></i>CIBIL ${h.cibil}</span><span class="hd-chip"><i class="ti ti-currency-rupee"></i>₹${Number(h.loanAmt).toLocaleString('en-IN')}</span><span class="hd-chip"><i class="ti ti-calendar"></i>${h.term}y</span><span class="hd-chip"><i class="ti ti-percentage"></i>${ratio}% ratio</span><span class="hd-chip">${h.edu==='Graduate'?'🎓':'📚'} ${h.edu}</span><span class="hd-chip">${h.emp==='No'?'💼 Salaried':'🏢 Self-Employed'}</span></div><div class="hd-item-conf"><div class="hd-conf-track"><div class="hd-conf-fill ${status}" style="width:${h.confidence}%"></div></div><span class="hd-conf-pct ${status}">${h.confidence}%</span></div></div></div>`;
   }).join('');
 }
 
-function openHistoryDrawer(){
-  document.getElementById('historyDrawer').classList.add('open');
-  document.getElementById('historyOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function closeHistoryDrawer(){
-  document.getElementById('historyDrawer').classList.remove('open');
-  document.getElementById('historyOverlay').classList.remove('open');
-  document.body.style.overflow='';
-}
-
+function openHistoryDrawer(){document.getElementById('historyDrawer').classList.add('open');document.getElementById('historyOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeHistoryDrawer(){document.getElementById('historyDrawer').classList.remove('open');document.getElementById('historyOverlay').classList.remove('open');document.body.style.overflow='';}
 function clearHistory(){
-  if(!_predictionHistory.length) return;
-  if(!confirm('Clear all '+ _predictionHistory.length +' prediction checks from history?')) return;
-  _predictionHistory=[];
-  _historyFilter='all';
+  if(!_predictionHistory.length)return;
+  if(!confirm('Clear all '+_predictionHistory.length+' prediction checks from history?'))return;
+  _predictionHistory=[];_historyFilter='all';
   document.querySelectorAll('.hd-filter-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('hdf-all').classList.add('active');
-  updateHistoryBadge();
-  renderHistoryDrawer();
+  updateHistoryBadge();renderHistoryDrawer();
 }
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeHistoryDrawer();});
 
-// Keyboard shortcut: Escape to close drawer
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') closeHistoryDrawer();
-});
-
-// ─── Run AI Prediction ────────────────────────────────────────────────────────
 async function runAI(){
-  const income =parseFloat(document.getElementById('p_income').value);
+  const income=parseFloat(document.getElementById('p_income').value);
   const loanAmt=parseFloat(document.getElementById('p_loan_amount').value);
-  const term   =parseInt(document.getElementById('p_loan_term').value);
-  const cibil  =parseInt(document.getElementById('p_cibil').value);
-  const edu    =document.querySelector('input[name="p_education"]:checked').value;
-  const emp    =document.querySelector('input[name="p_self_employed"]:checked').value;
-
+  const term=parseInt(document.getElementById('p_loan_term').value);
+  const cibil=parseInt(document.getElementById('p_cibil').value);
+  const edu=document.querySelector('input[name="p_education"]:checked').value;
+  const emp=document.querySelector('input[name="p_self_employed"]:checked').value;
   const errBox=document.getElementById('pErrBox');
   errBox.style.display='none';
   document.getElementById('aiResultCard').style.display='none';
   document.getElementById('predictResultPlaceholder').style.display='block';
   document.getElementById('applyNowWrap').style.display='none';
-
-  if(!income||!loanAmt||!term||!cibil){
-    document.getElementById('pErrTxt').textContent='Please fill all fields before running the AI model.';
-    errBox.style.display='flex';return;
-  }
-  if(cibil<300||cibil>900){
-    document.getElementById('pErrTxt').textContent='CIBIL score must be between 300 and 900.';
-    errBox.style.display='flex';return;
-  }
-
+  if(!income||!loanAmt||!term||!cibil){document.getElementById('pErrTxt').textContent='Please fill all fields before running the AI model.';errBox.style.display='flex';return;}
+  if(cibil<300||cibil>900){document.getElementById('pErrTxt').textContent='CIBIL score must be between 300 and 900.';errBox.style.display='flex';return;}
   setAIBtnState('loading');
-
   try{
-    const pred=await api('POST','/predict',{
-      education:edu,self_employed:emp,
-      income_annum:income,loan_amount:loanAmt,
-      loan_term:term,cibil_score:cibil
-    });
+    const pred=await api('POST','/predict',{education:edu,self_employed:emp,income_annum:income,loan_amount:loanAmt,loan_term:term,cibil_score:cibil});
     const approved=pred.approved===true;
     const conf=computeConf(approved,cibil,loanAmt,income,term,pred.details||null);
-
     const user=window._currentUser;
     if(user){
-      await api('POST','/loans/'+user.customer_id,{
-        loan_type:_selectedLoanType.type,
-        loan_type_name:_selectedLoanType.name,
-        amount:loanAmt,tenure_years:term,cibil_score:cibil,
-        income_annum:income,education:edu,self_employed:emp,
-        ai_assessment:approved?'approved':'rejected',
-      });
+      await api('POST','/loans/'+user.customer_id,{loan_type:_selectedLoanType.type,loan_type_name:_selectedLoanType.name,amount:loanAmt,tenure_years:term,cibil_score:cibil,income_annum:income,education:edu,self_employed:emp,ai_assessment:approved?'approved':'rejected'});
       refreshDashboard();
     }
-
-    // Save to history
     addToHistory({approved,cibil,loanAmt,income,term,edu,emp,confidence:conf,timestamp:Date.now()});
     renderResultCard(approved,cibil,loanAmt,income,term,edu,emp,pred.details||null,false);
     setAIBtnState(approved?'approved':'rejected');
     if(approved)document.getElementById('applyNowWrap').style.display='block';
-
   }catch(err){
+    console.warn('AI API failed, using local fallback:',err.message);
     const approved=cibil>=650&&(loanAmt/income)<=0.5&&term<=20;
     const conf=computeConf(approved,cibil,loanAmt,income,term,null);
     addToHistory({approved,cibil,loanAmt,income,term,edu,emp,confidence:conf,timestamp:Date.now()});
@@ -1480,27 +1015,14 @@ async function runAI(){
     setAIBtnState(approved?'approved':'rejected');
     if(approved)document.getElementById('applyNowWrap').style.display='block';
   }
-
   setTimeout(()=>setAIBtnState('idle'),5000);
 }
 
 function computeConf(approved,cibil,loanAmt,income,term,details){
   let conf=0;
-  if(approved){
-    conf=60;
-    if(cibil>=750)conf+=15;else if(cibil>=700)conf+=10;else if(cibil>=650)conf+=5;
-    const ratio=loanAmt/income;
-    if(ratio<=0.3)conf+=15;else if(ratio<=0.4)conf+=8;else if(ratio<=0.5)conf+=3;
-    if(term<=15)conf+=10;else if(term<=20)conf+=5;
-    conf=Math.min(conf,97);
-  }else{
-    conf=20;if(cibil<500)conf+=5;conf=Math.min(conf,45);
-  }
-  if(details&&details.total_score!==undefined){
-    const maxScore=details.threshold||10;
-    conf=Math.round((details.total_score/maxScore)*100);
-    conf=Math.max(5,Math.min(conf,99));
-  }
+  if(approved){conf=60;if(cibil>=750)conf+=15;else if(cibil>=700)conf+=10;else if(cibil>=650)conf+=5;const ratio=loanAmt/income;if(ratio<=0.3)conf+=15;else if(ratio<=0.4)conf+=8;else if(ratio<=0.5)conf+=3;if(term<=15)conf+=10;else if(term<=20)conf+=5;conf=Math.min(conf,97);}
+  else{conf=20;if(cibil<500)conf+=5;conf=Math.min(conf,45);}
+  if(details&&details.total_score!==undefined){const maxScore=details.threshold||10;conf=Math.round((details.total_score/maxScore)*100);conf=Math.max(5,Math.min(conf,99));}
   return conf;
 }
 
@@ -1511,63 +1033,28 @@ function renderResultCard(approved,cibil,loanAmt,income,term,edu,emp,details=nul
   document.getElementById('arcIcon').className=approved?'ti ti-circle-check':'ti ti-circle-x';
   const ratio=loanAmt/income;
   document.getElementById('arcVerdict').textContent=approved?'Loan Approved ✓':'Loan Eligibility Declined';
-  document.getElementById('arcReason').textContent=approved
-    ?`Your credit profile meets our lending criteria.${isLocal?' (Rule-based fallback)':''}`
-    :`Connect Bank branch support is available to help you with your application.${isLocal?' (Rule-based fallback)':''}`;
-
+  document.getElementById('arcReason').textContent=approved?`Your credit profile meets our lending criteria.${isLocal?' (Local assessment)':''}`:`Please visit a branch for assistance.${isLocal?' (Local assessment)':''}`;
   const conf=computeConf(approved,cibil,loanAmt,income,term,details);
   document.getElementById('arcConfPct').textContent=conf+'%';
   setTimeout(()=>{document.getElementById('arcBarFill').style.width=conf+'%'},100);
-
   const factors=[];
-  if(cibil>=700)factors.push({label:'Good CIBIL ('+cibil+')',good:true});
-  else if(cibil>=550)factors.push({label:'Fair CIBIL ('+cibil+')',good:false});
-  else factors.push({label:'Poor CIBIL ('+cibil+')',good:false});
-  if(ratio<=0.4)factors.push({label:'Low Debt Ratio',good:true});
-  else if(ratio<=0.6)factors.push({label:'Moderate Debt Ratio',good:false});
-  else factors.push({label:'High Debt Ratio',good:false});
-  if(edu==='Graduate')factors.push({label:'Graduate',good:true});
-  else factors.push({label:'Non-Graduate',good:false});
-  if(emp==='No')factors.push({label:'Salaried',good:true});
-  else factors.push({label:'Self-Employed',good:null});
-  if(term<=15)factors.push({label:'Short Tenure',good:true});
-  else if(term>25)factors.push({label:'Long Tenure',good:false});
-
-  document.getElementById('arcFactors').innerHTML=factors.map(f=>`
-    <span class="arc-factor ${f.good===true?'good':f.good===false?'bad':''}">
-      <i class="ti ti-${f.good===true?'check':'info-circle'}" style="font-size:10px"></i>${f.label}
-    </span>`).join('');
-
+  if(cibil>=700)factors.push({label:'Good CIBIL ('+cibil+')',good:true});else if(cibil>=550)factors.push({label:'Fair CIBIL ('+cibil+')',good:false});else factors.push({label:'Poor CIBIL ('+cibil+')',good:false});
+  if(ratio<=0.4)factors.push({label:'Low Debt Ratio',good:true});else if(ratio<=0.6)factors.push({label:'Moderate Debt Ratio',good:false});else factors.push({label:'High Debt Ratio',good:false});
+  if(edu==='Graduate')factors.push({label:'Graduate',good:true});else factors.push({label:'Non-Graduate',good:false});
+  if(emp==='No')factors.push({label:'Salaried',good:true});else factors.push({label:'Self-Employed',good:null});
+  if(term<=15)factors.push({label:'Short Tenure',good:true});else if(term>25)factors.push({label:'Long Tenure',good:false});
+  document.getElementById('arcFactors').innerHTML=factors.map(f=>`<span class="arc-factor ${f.good===true?'good':f.good===false?'bad':''}"><i class="ti ti-${f.good===true?'check':'info-circle'}" style="font-size:10px"></i>${f.label}</span>`).join('');
   const scoreLabel=cibil>=750?'Excellent':cibil>=700?'Good':cibil>=600?'Fair':'Poor';
   const ratioPct=((loanAmt/income)*100).toFixed(1)+'%';
-  const aiNote=details?`AI ${details.total_score}/${details.threshold}`:'Rule-based';
-
-  document.getElementById('arcMetrics').innerHTML=`
-    <div class="arc-metric">
-      <div class="arc-metric-label">CIBIL Score</div>
-      <div class="arc-metric-value">${cibil}</div>
-      <div class="arc-metric-sub">${scoreLabel}</div>
-    </div>
-    <div class="arc-metric">
-      <div class="arc-metric-label">Debt-to-Income</div>
-      <div class="arc-metric-value">${ratioPct}</div>
-      <div class="arc-metric-sub">Loan ÷ Income</div>
-    </div>
-    <div class="arc-metric">
-      <div class="arc-metric-label">Assessment</div>
-      <div class="arc-metric-value">${term}y</div>
-      <div class="arc-metric-sub">${aiNote}</div>
-    </div>`;
-
+  const aiNote=details?`AI ${details.total_score}/${details.threshold}`:'Local';
+  document.getElementById('arcMetrics').innerHTML=`<div class="arc-metric"><div class="arc-metric-label">CIBIL Score</div><div class="arc-metric-value">${cibil}</div><div class="arc-metric-sub">${scoreLabel}</div></div><div class="arc-metric"><div class="arc-metric-label">Debt-to-Income</div><div class="arc-metric-value">${ratioPct}</div><div class="arc-metric-sub">Loan ÷ Income</div></div><div class="arc-metric"><div class="arc-metric-label">Assessment</div><div class="arc-metric-value">${term}y</div><div class="arc-metric-sub">${aiNote}</div></div>`;
   placeholder.style.display='none';
   card.style.display='block';
   card.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-// ─── Finalise Application ─────────────────────────────────────────────────────
 async function finaliseApplication(){
-  const user=window._currentUser;
-  if(!user){alert('Please sign in first.');return}
+  const user=window._currentUser;if(!user){alert('Please sign in first.');return}
   const income=parseFloat(document.getElementById('p_income').value);
   const loanAmt=parseFloat(document.getElementById('p_loan_amount').value);
   const term=parseInt(document.getElementById('p_loan_term').value);
@@ -1575,21 +1062,14 @@ async function finaliseApplication(){
   const edu=document.querySelector('input[name="p_education"]:checked').value;
   const emp=document.querySelector('input[name="p_self_employed"]:checked').value;
   try{
-    await api('POST','/loans/'+user.customer_id,{
-      loan_type:_selectedLoanType.type,
-      loan_type_name:_selectedLoanType.name,
-      amount:loanAmt,tenure_years:term,cibil_score:cibil,
-      income_annum:income,education:edu,self_employed:emp,
-      ai_assessment:'approved',
-    });
+    await api('POST','/loans/'+user.customer_id,{loan_type:_selectedLoanType.type,loan_type_name:_selectedLoanType.name,amount:loanAmt,tenure_years:term,cibil_score:cibil,income_annum:income,education:edu,self_employed:emp,ai_assessment:'approved'});
     refreshDashboard();
-    document.getElementById('applyNowWrap').innerHTML=`<div class="suc-box" style="display:flex"><i class="ti ti-circle-check"></i>Application submitted successfully! Ref: APP-${Date.now().toString().slice(-6)}</div>`;
+    document.getElementById('applyNowWrap').innerHTML=`<div class="suc-box" style="display:flex"><i class="ti ti-circle-check"></i>Application submitted! Ref: APP-${Date.now().toString().slice(-6)}</div>`;
   }catch(e){
     document.getElementById('applyNowWrap').innerHTML=`<div class="err-box" style="display:flex"><i class="ti ti-alert-circle"></i>${e.message}</div>`;
   }
 }
 
-// ─── EMI Calculator ───────────────────────────────────────────────────────────
 function calcEMI(){
   const P=parseFloat(document.getElementById('loan_amount').value);
   const r=parseFloat(document.getElementById('calcRate').value)/12/100;
@@ -1605,18 +1085,8 @@ function calcEMI(){
   res.style.display='block';
 }
 
-// ─── Navigation ───────────────────────────────────────────────────────────────
-const PM={
-  dashboard:['Dashboard','/ Overview'],
-  accounts:['My Accounts','/ Accounts'],
-  transactions:['Loan History','/ History'],
-  loans:['My Loans','/ Lending'],
-  apply:['Apply for Loan','/ Apply'],
-  predict:['loan Eligibility Check','/ Prediction'],
-  profile:['Profile & KYC','/ Profile'],
-  settings:['Settings','/ Preferences'],
-  support:['Help & Support','/ Support'],
-};
+const PM={dashboard:['Dashboard','/ Overview'],accounts:['My Accounts','/ Accounts'],transactions:['Loan History','/ History'],loans:['My Loans','/ Lending'],apply:['Apply for Loan','/ Apply'],predict:['Loan Eligibility Check','/ Prediction'],profile:['Profile & KYC','/ Profile'],settings:['Settings','/ Preferences'],support:['Help & Support','/ Support']};
+
 function showPage(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id)?.classList.add('active');
@@ -1627,20 +1097,10 @@ function showPage(id,btn){
   window.scrollTo(0,0);
   if(id==='transactions'||id==='loans')buildLoanHistoryPage();
   if(id==='dashboard')refreshDashboard();
-  if(id==='predict'){
-    setAIBtnState('idle');
-    document.getElementById('aiResultCard').style.display='none';
-    document.getElementById('predictResultPlaceholder').style.display='block';
-    document.getElementById('applyNowWrap').style.display='none';
-  }
+  if(id==='predict'){setAIBtnState('idle');document.getElementById('aiResultCard').style.display='none';document.getElementById('predictResultPlaceholder').style.display='block';document.getElementById('applyNowWrap').style.display='none';}
 }
 
-function togglePw(id,btn){
-  const inp=document.getElementById(id);
-  const isText=inp.type==='text';
-  inp.type=isText?'password':'text';
-  btn.innerHTML=isText?'<i class="ti ti-eye"></i>':'<i class="ti ti-eye-off"></i>';
-}
+function togglePw(id,btn){const inp=document.getElementById(id);const isText=inp.type==='text';inp.type=isText?'password':'text';btn.innerHTML=isText?'<i class="ti ti-eye"></i>':'<i class="ti ti-eye-off"></i>';}
 function toggleFaq(el){el.classList.toggle('open')}
 function checkStrength(){
   const pw=document.getElementById('reg-pass').value;
@@ -1649,19 +1109,13 @@ function checkStrength(){
   if(!pw){wrap.style.display='none';return}
   wrap.style.display='block';
   let score=0;
-  if(pw.length>=8)score++;
-  if(/[A-Z]/.test(pw))score++;
-  if(/[0-9]/.test(pw))score++;
-  if(/[^A-Za-z0-9]/.test(pw))score++;
-  ['pb1','pb2','pb3','pb4'].forEach((b,i)=>{
-    const el=document.getElementById(b);
-    el.className='pw-bar';
-    if(i<score)el.classList.add(score<=2?'weak':score===3?'fair':'strong');
-  });
+  if(pw.length>=8)score++;if(/[A-Z]/.test(pw))score++;if(/[0-9]/.test(pw))score++;if(/[^A-Za-z0-9]/.test(pw))score++;
+  ['pb1','pb2','pb3','pb4'].forEach((b,i)=>{const el=document.getElementById(b);el.className='pw-bar';if(i<score)el.classList.add(score<=2?'weak':score===3?'fair':'strong');});
   label.textContent=['','Too weak','Fair','Strong','Very strong'][score]||'';
   label.style.color=['','#D83232','#E07B00','#22A05A','#22A05A'][score]||'var(--hint)';
 }
 
+// ─── INIT ─────────────────────────────────────────────────────────────────────
 const existingSession=getSession();
 if(existingSession)enterApp(existingSession);
 </script>
