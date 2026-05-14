@@ -992,41 +992,34 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 const API = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
   ? 'http://127.0.0.1:7860'
   : '';
-console.log('🔗 API base URL:', API || '(same origin / relative)');
-const SESSION_KEY = 'nexabank_session';
-function getSession(){try{return JSON.parse(sessionStorage.getItem(SESSION_KEY))}catch{return null}}
-function saveSession(u){sessionStorage.setItem(SESSION_KEY,JSON.stringify(u))}
-function clearSession(){sessionStorage.removeItem(SESSION_KEY)}
+
+console.log('🔗 API URL:', API || '(relative/same origin)');
+console.log('🌐 Hostname:', window.location.hostname);
 
 async function api(method, path, body = null) {
+  const url = API + path;
+  console.log('📡 Calling:', method, url, body || '');
   const opts = { method, headers: { 'Content-Type': 'application/json' } };
   if (body) opts.body = JSON.stringify(body);
-
   let res;
   try {
-    res = await fetch(API + path, opts);
+    res = await fetch(url, opts);
   } catch (err) {
-    // Network-level failure
-    if (err.message.includes('Failed to fetch')) {
-      throw new Error('❌ Cannot reach server. Is your backend running at ' + API + '? Check terminal for errors.');
-    } else if (err.message.includes('NetworkError')) {
-      throw new Error('❌ Network error. Possible CORS issue or server is down.');
-    } else {
-      throw new Error('❌ Connection failed: ' + err.message);
-    }
+    console.error('❌ Fetch failed:', err.message);
+    throw new Error('❌ Cannot reach server at ' + url + ' — Is backend running? Error: ' + err.message);
   }
-
   let data;
   try {
     data = await res.json();
   } catch {
-    throw new Error('❌ Server returned invalid response (not JSON). Status: ' + res.status);
+    console.error('❌ Invalid JSON response, status:', res.status);
+    throw new Error('❌ Server returned invalid response. Status: ' + res.status);
   }
-
   if (!res.ok) {
+    console.error('❌ API error:', res.status, data);
     throw new Error(data.detail || '❌ Server error: ' + res.status);
   }
-
+  console.log('✅ Response:', data);
   return data;
 }
 
