@@ -6,12 +6,16 @@ import string
 from datetime import datetime, date
 from typing import Optional
 
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
 import pg8000.native
 import uvicorn
+
+# ── Load environment variables from .env file ─────────────────────────────────
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -20,15 +24,22 @@ ssl_ctx = ssl.create_default_context()
 ssl_ctx.check_hostname = False
 ssl_ctx.verify_mode = ssl.CERT_NONE
 
-# ── DB Config (reads from environment variables) ──────────────────────────────
+# ── DB Config (reads from .env file) ──────────────────────────────────────────
 DB_CONFIG = {
-    "host":        os.environ.get("DB_HOST", "db.rorsnqtkwkzcoultokvs.supabase.co"),
+    "host":        os.environ.get("DB_HOST"),
     "port":        int(os.environ.get("DB_PORT", 5432)),
     "user":        os.environ.get("DB_USER", "postgres"),
-    "password":    os.environ.get("DB_PASSWORD", "divya_23@10"),
+    "password":    os.environ.get("DB_PASSWORD"),
     "database":    os.environ.get("DB_NAME", "postgres"),
     "ssl_context": ssl_ctx,
+    "timeout":20,
 }
+
+# ── Validate required env vars ────────────────────────────────────────────────
+if not DB_CONFIG["host"] or not DB_CONFIG["password"]:
+    raise RuntimeError(
+        "Missing required environment variables: DB_HOST and DB_PASSWORD must be set in your .env file."
+    )
 
 app = FastAPI(title="NexaBank API", version="1.0.0")
 
@@ -113,7 +124,10 @@ class PredictIn(BaseModel):
 def root():
     html_path = os.path.join(BASE_DIR, "user.html")
     if not os.path.isfile(html_path):
-        return JSONResponse(status_code=200, content={"status": "ok", "app": "NexaBank API v1.0.0"})
+        return JSONResponse(
+            status_code=200,
+            content={"status": "ok", "app": "NexaBank API v1.0.0"}
+        )
     return FileResponse(html_path)
 
 # ── Health check (also tests DB connection) ───────────────────────────────────
@@ -127,8 +141,8 @@ def health():
     except Exception as e:
         db_status = f"error: {str(e)}"
     return {
-        "status": "ok",
-        "database": db_status,
+        "status":    "ok",
+        "database":  db_status,
         "timestamp": datetime.utcnow().isoformat()
     }
 
@@ -194,7 +208,11 @@ def create_loan(customer_id: str, body: LoanIn):
         user_id = row["id"]
 
         ref    = gen_ref("LN")
-        status = body.ai_assessment if body.ai_assessment in ("approved", "rejected") else "pending"
+        status = (
+            body.ai_assessment
+            if body.ai_assessment in ("approved", "rejected")
+            else "pending"
+        )
 
         conn.run(
             """
@@ -270,19 +288,31 @@ def loan_stats(customer_id: str):
 # ── PREDICT ───────────────────────────────────────────────────────────────────
 @app.post("/predict")
 def predict(body: PredictIn):
-    score = 0
+    score     = 0
     threshold = 5
 
-    if body.cibil_score >= 750:   score += 3
-    elif body.cibil_score >= 650: score += 2
-    elif body.cibil_score >= 550: score += 1
+    # CIBIL score band
+    if body.cibil_score >= 750:
+        score += 3
+    elif body.cibil_score >= 650:
+        score += 2
+    elif body.cibil_score >= 550:
+        score += 1
 
+    # Debt-to-income ratio
     ratio = body.loan_amount / max(body.income_annum, 1)
-    if ratio <= 0.3:   score += 2
-    elif ratio <= 0.5: score += 1
+    if ratio <= 0.3:
+        score += 2
+    elif ratio <= 0.5:
+        score += 1
 
-    if body.education == "Graduate": score += 1
-    if body.loan_term <= 15:         score += 1
+    # Education bonus
+    if body.education == "Graduate":
+        score += 1
+
+    # Short tenure bonus
+    if body.loan_term <= 15:
+        score += 1
 
     approved = score >= threshold
 
@@ -291,11 +321,21 @@ def predict(body: PredictIn):
         "details": {
             "total_score": score,
             "threshold":   threshold,
-            "cibil_band":  "Good" if body.cibil_score >= 700 else "Fair" if body.cibil_score >= 550 else "Poor",
-            "dti_ratio":   round(ratio * 100, 1),
+            "cibil_band":  (
+                "Good" if body.cibil_score >= 700
+                else "Fair" if body.cibil_score >= 550
+                else "Poor"
+            ),
+            "dti_ratio": round(ratio * 100, 1),
         },
     }
 
 
+# ── Entry point ───────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 7860)))
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 7860)),
+        reload=False,
+    )
