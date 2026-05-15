@@ -1,8 +1,7 @@
-FROM python:3.10-slim
+FROM python:3.13-slim
 
 WORKDIR /app
 
-# System deps for ML libraries
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
@@ -11,8 +10,9 @@ RUN apt-get update && apt-get install -y \
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir --only-binary=:all: numpy==2.2.6 && \
     pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "app.py"]RUN pip install --no-cache-dir --timeout=120 -r requirements.txt
+CMD ["python", "app.py"]
